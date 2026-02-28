@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NBA Props Edge Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f7f6f2;
+    --surface:   #ffffff;
+    --border:    #e8e5de;
+    --text:      #1a1814;
+    --muted:     #8a8880;
+    --accent:    #1d6b3e;
+    --accent-lt: #e8f3ec;
+    --warn:      #b45309;
+    --warn-lt:   #fef3c7;
+    --danger:    #991b1b;
+    --danger-lt: #fee2e2;
+    --over:      #1d6b3e;
+    --under:     #1e3a8a;
+    --under-lt:  #eff6ff;
+    --strong:    #1d6b3e;
+    --tab-active:#1a1814;
+    --radius:    6px;
+    --shadow:    0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 32px;
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    letter-spacing: -0.3px;
+  }
+
+  .updated {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-left: auto;
+  }
+
+  /* ── RECORD STRIP ── */
+  .record-strip {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+  }
+
+  .record-card {
+    padding: 14px 28px 14px 0;
+    margin-right: 28px;
+    border-right: 1px solid var(--border);
+    min-width: 140px;
+    flex-shrink: 0;
+  }
+  .record-card:last-child { border-right: none; }
+
+  .record-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .record-main {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    line-height: 1;
+    color: var(--text);
+  }
+
+  .record-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 3px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .roi-pos { color: var(--accent); }
+  .roi-neg { color: var(--danger); }
+
+  /* ── TABS ── */
+  .tabs-wrap {
+    padding: 0 32px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 0;
+  }
+
+  .tab {
+    padding: 14px 22px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .tab:hover { color: var(--text); }
+  .tab.active {
+    color: var(--tab-active);
+    border-bottom-color: var(--tab-active);
+  }
+
+  .tab-count {
+    display: inline-block;
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 1px 7px;
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    margin-left: 6px;
+    color: var(--muted);
+  }
+  .tab.active .tab-count {
+    background: var(--text);
+    color: #fff;
+  }
+
+  /* ── MAIN CONTENT ── */
+  main { padding: 24px 32px; }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── FILTERS ── */
+  .filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .filter-btn {
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    color: var(--muted);
+    transition: all 0.15s;
+  }
+  .filter-btn:hover { border-color: var(--text); color: var(--text); }
+  .filter-btn.active {
+    background: var(--text);
+    border-color: var(--text);
+    color: #fff;
+  }
+
+  .filter-label {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* ── TABLE ── */
+  .table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  thead th {
+    text-align: left;
+    padding: 11px 14px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+    background: #faf9f6;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #faf9f6; }
+
+  td {
+    padding: 11px 14px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  /* ── BADGES ── */
+  .pick-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .pick-strong-over  { background: var(--accent-lt); color: var(--accent); }
+  .pick-strong-under { background: var(--under-lt);  color: var(--under);  }
+  .pick-over         { background: #f0fdf4;           color: #16a34a;       }
+  .pick-under        { background: #f0f7ff;           color: #2563eb;       }
+  .pick-pass         { background: var(--bg);         color: var(--muted);  }
+
+  .dir-arrow { font-size: 13px; }
+
+  .agree-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  .agree-HIGH { background: var(--accent); }
+  .agree-MED  { background: var(--warn);   }
+  .agree-LOW  { background: #94a3b8;       }
+
+  .conf-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .conf-bar {
+    width: 60px;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .conf-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--accent);
+    transition: width 0.4s ease;
+  }
+  .conf-fill.mid  { background: var(--warn); }
+  .conf-fill.low  { background: #94a3b8;     }
+
+  .conf-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    width: 26px;
+    text-align: right;
+  }
+
+  .edge-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .edge-pos { color: var(--accent); }
+  .edge-neg { color: var(--under);  }
+
+  .odds-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .odds-good { color: var(--accent); }
+
+  .player-name { font-weight: 500; }
+  .player-team {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+
+  .line-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+  }
+
+  .pred-val {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* ── EMPTY / LOADING ── */
+  .state-msg {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+  }
+  .state-msg .icon { font-size: 32px; margin-bottom: 12px; }
+  .state-msg p { font-size: 14px; }
+
+  /* ── NO PICKS SECTION ── */
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 14px 6px;
+    background: #faf9f6;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    header, .record-strip, .tabs-wrap, main { padding-left: 16px; padding-right: 16px; }
+    .record-card { min-width: 110px; padding-right: 20px; margin-right: 20px; }
+    .record-main { font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>NBA Props</h1>
+  <span id="updated" class="updated">loading...</span>
+</header>
+
+<!-- Record strip -->
+<div class="record-strip" id="record-strip">
+  <div class="record-card">
+    <div class="record-label">Season Record</div>
+    <div class="record-main" id="rec-overall">—</div>
+    <div class="record-sub" id="rec-overall-pct">loading...</div>
+  </div>
+  <div class="record-card">
+    <div class="record-label">Threes</div>
+    <div class="record-main" id="rec-fg3m">—</div>
+    <div class="record-sub" id="rec-fg3m-roi">—</div>
+  </div>
+  <div class="record-card">
+    <div class="record-label">Rebounds</div>
+    <div class="record-main" id="rec-reb">—</div>
+    <div class="record-sub" id="rec-reb-roi">—</div>
+  </div>
+  <div class="record-card">
+    <div class="record-label">Assists</div>
+    <div class="record-main" id="rec-ast">—</div>
+    <div class="record-sub" id="rec-ast-roi">—</div>
+  </div>
+  <div class="record-card">
+    <div class="record-label">Strong Picks</div>
+    <div class="record-main" id="rec-strong">—</div>
+    <div class="record-sub" id="rec-strong-pct">STRONG only</div>
+  </div>
+  <div class="record-card">
+    <div class="record-label">Units P&L</div>
+    <div class="record-main" id="rec-units">—</div>
+    <div class="record-sub">season total</div>
+  </div>
+</div>
+
+<!-- Tabs -->
+<div class="tabs-wrap">
+  <div class="tab active" data-tab="fg3m">Threes <span class="tab-count" id="cnt-fg3m">—</span></div>
+  <div class="tab" data-tab="reb">Rebounds <span class="tab-count" id="cnt-reb">—</span></div>
+  <div class="tab" data-tab="ast">Assists <span class="tab-count" id="cnt-ast">—</span></div>
+  <div class="tab" data-tab="tracking">Season Log</div>
+</div>
+
+<main>
+  <div class="tab-panel active" id="panel-fg3m"></div>
+  <div class="tab-panel" id="panel-reb"></div>
+  <div class="tab-panel" id="panel-ast"></div>
+  <div class="tab-panel" id="panel-tracking"></div>
+</main>
+
+<script>
+// ── CONFIG ────────────────────────────────────────────────────────────────────
+const GITHUB_USER = 'YOURUSERNAME';
+const GITHUB_REPO = 'nba-props-site';
+const BASE        = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main`;
+
+const TARGETS = ['fg3m','reb','ast'];
+const TARGET_LABELS = { fg3m:'Threes', reb:'Rebounds', ast:'Assists' };
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+function today() {
+  return new Date().toISOString().slice(0,10);
+}
+
+async function fetchCSV(url) {
+  const r = await fetch(url);
+  if (!r.ok) return null;
+  const text = await r.text();
+  return parseCSV(text);
+}
+
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  if (lines.length < 2) return [];
+  const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g,''));
+  return lines.slice(1).map(line => {
+    // handle quoted fields
+    const vals = [];
+    let cur = '', inQ = false;
+    for (let i = 0; i < line.length; i++) {
+      if (line[i] === '"') { inQ = !inQ; continue; }
+      if (line[i] === ',' && !inQ) { vals.push(cur); cur = ''; continue; }
+      cur += line[i];
+    }
+    vals.push(cur);
+    const obj = {};
+    headers.forEach((h,i) => obj[h] = (vals[i]||'').trim());
+    return obj;
+  });
+}
+
+function fmt(val, dec=1) {
+  const n = parseFloat(val);
+  return isNaN(n) ? '—' : n.toFixed(dec);
+}
+
+function fmtOdds(val) {
+  const n = parseInt(val);
+  if (isNaN(n)) return '—';
+  return n > 0 ? `+${n}` : `${n}`;
+}
+
+function fmtRecord(w, l) {
+  if (w+l === 0) return '—';
+  return `${w}-${l}`;
+}
+
+function hitRate(w, l) {
+  if (w+l === 0) return '—';
+  return `${((w/(w+l))*100).toFixed(0)}% hit`;
+}
+
+// ── LOAD TRACKING ─────────────────────────────────────────────────────────────
+async function loadTracking() {
+  const data = await fetchCSV(`${BASE}/tracking/picks_log.csv`);
+  if (!data || data.length === 0) return null;
+  return data;
+}
+
+function computeRecord(rows, filter={}) {
+  let w=0, l=0, units=0;
+  rows.forEach(r => {
+    if (filter.target && r.target !== filter.target) return;
+    if (filter.strong && !r.pick.includes('STRONG')) return;
+    if (r.result === 'WIN')  { w++;  units += parseFloat(r.profit_units)||0; }
+    if (r.result === 'LOSS') { l++;  units += parseFloat(r.profit_units)||0; }
+  });
+  return {w, l, units};
+}
+
+function renderRecords(tracking) {
+  if (!tracking) return;
+
+  const overall = computeRecord(tracking);
+  document.getElementById('rec-overall').textContent = fmtRecord(overall.w, overall.l);
+  document.getElementById('rec-overall-pct').textContent = hitRate(overall.w, overall.l);
+
+  TARGETS.forEach(tgt => {
+    const rec = computeRecord(tracking, {target:tgt});
+    const roi = rec.w+rec.l > 0 ? (rec.units/(rec.w+rec.l)*100).toFixed(1) : '—';
+    document.getElementById(`rec-${tgt}`).textContent = fmtRecord(rec.w, rec.l);
+    const roiEl = document.getElementById(`rec-${tgt}-roi`);
+    roiEl.textContent = roi !== '—' ? `${roi > 0 ? '+':''}${roi}% ROI` : '—';
+    roiEl.className = 'record-sub ' + (parseFloat(roi)>0 ? 'roi-pos' : parseFloat(roi)<0 ? 'roi-neg' : '');
+  });
+
+  const strong = computeRecord(tracking, {strong:true});
+  document.getElementById('rec-strong').textContent = fmtRecord(strong.w, strong.l);
+  document.getElementById('rec-strong-pct').textContent = hitRate(strong.w, strong.l);
+
+  const unitsEl = document.getElementById('rec-units');
+  unitsEl.textContent = (overall.units >= 0 ? '+' : '') + overall.units.toFixed(2);
+  unitsEl.className = 'record-main ' + (overall.units >= 0 ? 'roi-pos' : 'roi-neg');
+}
+
+// ── BUILD EDGE TABLE ──────────────────────────────────────────────────────────
+function pickClass(pick) {
+  if (!pick || pick === 'PASS') return 'pick-pass';
+  if (pick.includes('STRONG') && pick.includes('OVER'))  return 'pick-strong-over';
+  if (pick.includes('STRONG') && pick.includes('UNDER')) return 'pick-strong-under';
+  if (pick.includes('OVER'))  return 'pick-over';
+  if (pick.includes('UNDER')) return 'pick-under';
+  return 'pick-pass';
+}
+
+function dirArrow(dir) {
+  if (dir === 'OVER')  return '↑';
+  if (dir === 'UNDER') return '↓';
+  return '';
+}
+
+function confClass(conf) {
+  const c = parseInt(conf);
+  if (c >= 65) return '';
+  if (c >= 45) return 'mid';
+  return 'low';
+}
+
+function buildEdgeTable(rows, target, filterPick='all') {
+  // Sort: picks first then by confidence desc
+  const sorted = [...rows].sort((a,b) => {
+    const aPass = (!a.pick || a.pick==='PASS') ? 1 : 0;
+    const bPass = (!b.pick || b.pick==='PASS') ? 1 : 0;
+    if (aPass !== bPass) return aPass - bPass;
+    return (parseInt(b.confidence)||0) - (parseInt(a.confidence)||0);
+  });
+
+  const picks   = sorted.filter(r => r.pick && r.pick !== 'PASS');
+  const passes  = sorted.filter(r => !r.pick || r.pick === 'PASS');
+
+  const display = filterPick === 'picks' ? picks :
+                  filterPick === 'strong' ? picks.filter(r=>r.pick.includes('STRONG')) :
+                  sorted;
+
+  if (display.length === 0) {
+    return `<div class="state-msg"><div class="icon">📭</div><p>No ${TARGET_LABELS[target]} props available today.</p></div>`;
+  }
+
+  const rows_html = display.map((r, idx) => {
+    const edge    = parseFloat(r.edge);
+    const edgePct = parseFloat(r.edge_pct);
+    const conf    = parseInt(r.confidence)||0;
+    const odds    = parseInt(r.best_odds_for_bet);
+    const isPass  = !r.pick || r.pick === 'PASS';
+    const isPick  = !isPass;
+    const isSection = idx === picks.length && filterPick === 'all' && passes.length > 0;
+
+    const sectionRow = isSection
+      ? `<tr><td colspan="10" class="section-label">Other Players (no pick)</td></tr>`
+      : '';
+
+    return `${sectionRow}<tr style="${isPass ? 'opacity:0.55' : ''}">
+      <td>
+        <div class="player-name">${r.player_name || '—'}</div>
+        <div class="player-team">${(r.game||'').replace(' @ ',' · ')}</div>
+      </td>
+      <td><span class="pick-badge ${pickClass(r.pick)}">
+        <span class="dir-arrow">${dirArrow(r.direction)}</span>
+        ${r.pick || 'PASS'}
+      </span></td>
+      <td>
+        <div class="conf-bar-wrap">
+          <div class="conf-bar"><div class="conf-fill ${confClass(r.confidence)}" style="width:${Math.min(conf,100)}%"></div></div>
+          <span class="conf-num">${conf}</span>
+        </div>
+      </td>
+      <td>
+        <span class="agree-dot agree-${r.agreement||'LOW'}"></span>
+        ${r.agreement||'—'}
+      </td>
+      <td><span class="line-val">${fmt(r.line)}</span></td>
+      <td><span class="pred-val">${fmt(r.prediction)}</span></td>
+      <td><span class="edge-val ${edge>=0?'edge-pos':'edge-neg'}">${edge>=0?'+':''}${fmt(r.edge,2)}</span>
+          <span class="odds-val" style="margin-left:4px">(${edgePct.toFixed(0)}%)</span></td>
+      <td><span class="odds-val ${odds>0?'odds-good':''}">${fmtOdds(r.best_odds_for_bet)}</span></td>
+      <td><span class="odds-val">${fmt(r.model_win_prob*100,0)}%</span></td>
+      <td><span class="odds-val">${r.cluster||'—'}</span></td>
+    </tr>`;
+  }).join('');
+
+  return `<table>
+    <thead><tr>
+      <th>Player / Game</th>
+      <th>Pick</th>
+      <th>Confidence</th>
+      <th>Agreement</th>
+      <th>Line</th>
+      <th>Model</th>
+      <th>Edge</th>
+      <th>Best Odds</th>
+      <th>Win Prob</th>
+      <th>Tier</th>
+    </tr></thead>
+    <tbody>${rows_html}</tbody>
+  </table>`;
+}
+
+// ── RENDER PANEL ──────────────────────────────────────────────────────────────
+function renderPanel(target, rows, filter='all') {
+  const panel = document.getElementById(`panel-${target}`);
+  const pickCount = rows.filter(r => r.pick && r.pick !== 'PASS').length;
+  const strongCount = rows.filter(r => r.pick && r.pick.includes('STRONG')).length;
+
+  document.getElementById(`cnt-${target}`).textContent = pickCount;
+
+  panel.innerHTML = `
+    <div class="filters">
+      <span class="filter-label">Show:</span>
+      <button class="filter-btn ${filter==='all'?'active':''}" onclick="setFilter('${target}','all',this)">All players</button>
+      <button class="filter-btn ${filter==='picks'?'active':''}" onclick="setFilter('${target}','picks',this)">Picks only (${pickCount})</button>
+      <button class="filter-btn ${filter==='strong'?'active':''}" onclick="setFilter('${target}','strong',this)">Strong only (${strongCount})</button>
+    </div>
+    <div class="table-wrap">${buildEdgeTable(rows, target, filter)}</div>
+  `;
+}
+
+// Global state
+const state = { fg3m:[], reb:[], ast:[], filters:{fg3m:'all',reb:'all',ast:'all'} };
+
+function setFilter(target, filter, btn) {
+  state.filters[target] = filter;
+  document.querySelectorAll(`#panel-${target} .filter-btn`).forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const wrap = document.querySelector(`#panel-${target} .table-wrap`);
+  wrap.innerHTML = buildEdgeTable(state[target], target, filter);
+}
+
+// ── SEASON LOG TABLE ──────────────────────────────────────────────────────────
+function renderTrackingPanel(rows) {
+  if (!rows || rows.length === 0) {
+    document.getElementById('panel-tracking').innerHTML =
+      `<div class="state-msg"><div class="icon">📋</div><p>No tracking data yet — picks will appear here after games resolve.</p></div>`;
+    return;
+  }
+
+  const resolved = rows.filter(r => r.result && r.result !== '' && r.result !== 'NA')
+    .sort((a,b) => b.date.localeCompare(a.date));
+
+  const rows_html = resolved.map(r => {
+    const win  = r.result === 'WIN';
+    const loss = r.result === 'LOSS';
+    const push = r.result === 'PUSH';
+    const units = parseFloat(r.profit_units);
+
+    return `<tr>
+      <td><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted)">${r.date}</span></td>
+      <td><span class="player-name">${r.player_name}</span></td>
+      <td><span style="font-size:11px;color:var(--muted)">${TARGET_LABELS[r.target]||r.target}</span></td>
+      <td><span class="pick-badge ${pickClass(r.pick)}">${r.pick}</span></td>
+      <td><span class="line-val">${fmt(r.line)}</span></td>
+      <td><span class="pred-val">${fmt(r.prediction)}</span></td>
+      <td><span class="pred-val" style="color:var(--muted)">${fmt(r.actual)}</span></td>
+      <td><span style="font-weight:600;color:${win?'var(--accent)':loss?'var(--danger)':'var(--muted)'}">${r.result}</span></td>
+      <td><span class="edge-val ${!isNaN(units)&&units>=0?'edge-pos':'edge-neg'}">${!isNaN(units)?(units>=0?'+':'')+units.toFixed(3):'—'}</span></td>
+      <td><span class="odds-val">${r.confidence||'—'}</span></td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('panel-tracking').innerHTML = `
+    <div class="table-wrap"><table>
+      <thead><tr>
+        <th>Date</th><th>Player</th><th>Stat</th><th>Pick</th>
+        <th>Line</th><th>Model</th><th>Actual</th>
+        <th>Result</th><th>Units</th><th>Conf</th>
+      </tr></thead>
+      <tbody>${rows_html}</tbody>
+    </table></div>`;
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+async function init() {
+  const dateStr = today();
+  document.getElementById('updated').textContent = `Updated ${dateStr}`;
+
+  // Load edge sheets
+  for (const tgt of TARGETS) {
+    const url  = `${BASE}/data/edge_sheet_${tgt}_${dateStr}.csv`;
+    const rows = await fetchCSV(url);
+
+    if (rows && rows.length > 0) {
+      state[tgt] = rows;
+      renderPanel(tgt, rows, 'all');
+    } else {
+      // Try yesterday
+      const yd = new Date(Date.now()-86400000).toISOString().slice(0,10);
+      const old = await fetchCSV(`${BASE}/data/edge_sheet_${tgt}_${yd}.csv`);
+      state[tgt] = old || [];
+      if (old && old.length > 0) {
+        renderPanel(tgt, old, 'all');
+        document.getElementById('updated').textContent = `Last updated ${yd}`;
+      } else {
+        document.getElementById(`panel-${tgt}`).innerHTML =
+          `<div class="state-msg"><div class="icon">🏀</div><p>No ${TARGET_LABELS[tgt]} data yet for today.</p></div>`;
+        document.getElementById(`cnt-${tgt}`).textContent = '0';
+      }
+    }
+  }
+
+  // Load tracking
+  const tracking = await loadTracking();
+  renderRecords(tracking);
+  renderTrackingPanel(tracking);
+}
+
+// ── TABS ──────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(`panel-${tab.dataset.tab}`).classList.add('active');
+  });
+});
+
+init();
+</script>
+</body>
+</html>
