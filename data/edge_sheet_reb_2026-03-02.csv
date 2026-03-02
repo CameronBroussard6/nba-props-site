@@ -1,0 +1,64 @@
+date,game,player_name,cluster,line,prediction,edge,edge_pct,direction,pick,confidence,agreement,model_std,blowout_risk,best_over_odds,best_under_odds,best_odds_for_bet,imp_over_prob,imp_under_prob,model_win_prob,kelly,m1_xgb,m4_mean,m5_context,m7_matchup,n_books
+2026-03-02,Boston Celtics @ Milwaukee Bucks,Bobby Portis,C3,4.5,7.89,3.39,75.3,OVER,STRONG OVER,100,HIGH,0.714,0.13,140,107,140,0.463,0.537,1,0.5,7.75,7.75,8.69,8.08,5
+2026-03-02,Boston Celtics @ Milwaukee Bucks,Ryan Rollins,C1,4.5,1.85,-2.65,58.9,UNDER,STRONG UNDER,100,HIGH,0.452,0.18,200,-130,-130,0.371,0.629,1,0.5,1.75,1.75,2.45,2.46,5
+2026-03-02,Boston Celtics @ Milwaukee Bucks,Baylor Scheierman,C1,4.5,2.04,-2.46,54.7,UNDER,STRONG UNDER,100,HIGH,0.592,0.27,180,-125,-125,0.391,0.609,1,0.5,1.93,1.93,2.65,2.78,5
+2026-03-02,Los Angeles Clippers @ Golden State Warriors,John Collins,C3,5.5,8.32,2.82,51.3,OVER,STRONG OVER,100,HIGH,0.248,0.05,130,108,130,0.475,0.525,1,0.5,8.36,8.36,8.09,8.5,5
+2026-03-02,Boston Celtics @ Milwaukee Bucks,Neemias Queta,C1,7.5,3.85,-3.65,48.7,UNDER,STRONG UNDER,100,HIGH,0.55,0.25,135,104,104,0.465,0.535,1,0.5,3.96,3.96,3.25,2.85,5
+2026-03-02,Los Angeles Clippers @ Golden State Warriors,Gui Santos,C1,5.5,2.84,-2.66,48.4,UNDER,STRONG UNDER,100,HIGH,0.102,0.05,128,-156,-156,0.419,0.581,1,0.5,2.83,2.83,2.9,2.69,5
+2026-03-02,Denver Nuggets @ Utah Jazz,Keyonte George,C4,2.5,3.3,0.8,32,OVER,STRONG OVER,100,HIGH,0.488,0.25,200,-110,200,0.389,0.611,0.949,0.4618,3.26,3.26,3.58,4.63,5
+2026-03-02,Houston Rockets @ Washington Wizards,Bilal Coulibaly,C2,3.5,4.58,1.08,30.9,OVER,STRONG OVER,100,HIGH,0.413,0,200,-122,200,0.378,0.622,0.996,0.497,4.53,4.53,4.88,4.11,5
+2026-03-02,Boston Celtics @ Milwaukee Bucks,Myles Turner,C2,5.5,6.83,1.33,24.2,OVER,STRONG OVER,100,HIGH,0.791,0.04,205,122,205,0.421,0.579,0.954,0.4658,6.78,6.78,7.14,4.99,5
+2026-03-02,Los Angeles Clippers @ Golden State Warriors,Pat Spencer,C1,2.5,1.07,-1.43,57.2,UNDER,STRONG UNDER,97,HIGH,0.441,0,190,106,106,0.415,0.585,0.999,0.499,1.14,1.14,0.71,1.78,4
+2026-03-02,Denver Nuggets @ Utah Jazz,Julian Strawther,C2,3.5,1.81,-1.69,48.3,UNDER,STRONG UNDER,97,HIGH,0.502,0.29,205,-132,-132,0.366,0.634,1,0.5,1.78,1.78,1.98,3.17,4
+2026-03-02,Houston Rockets @ Washington Wizards,Kyshawn George,C2,3.5,4.25,0.75,21.4,OVER,STRONG OVER,97,HIGH,0.318,0.2,120,-150,120,0.431,0.569,0.991,0.4917,4.22,4.22,4.4,3.83,5
+2026-03-02,San Antonio Spurs @ Philadelphia 76ers,Dominick Barlow,C1,4.5,2.82,-1.68,37.3,UNDER,STRONG UNDER,91,HIGH,0.329,0.18,-127,-104,-104,0.523,0.477,1,0.5,2.88,2.88,2.46,2.13,2
+2026-03-02,Houston Rockets @ Washington Wizards,Reed Sheppard,C1,3.5,1.57,-1.93,55.1,UNDER,STRONG UNDER,90,HIGH,0.474,0.4,200,-126,-126,0.374,0.626,1,0.5,1.51,1.51,1.94,2.78,5
+2026-03-02,Boston Celtics @ Milwaukee Bucks,Cam Thomas,C4,1.5,3.15,1.65,110,OVER,STRONG OVER,88,HIGH,0.6,0.03,-114,-114,-114,0.5,0.5,0.997,0.4968,3.23,3.23,2.67,4.09,1
+2026-03-02,Houston Rockets @ Washington Wizards,Josh Okogie,C1,3.5,2.63,-0.87,24.9,UNDER,STRONG UNDER,88,HIGH,0.196,0.23,120,-160,-160,0.425,0.575,0.998,0.4974,2.68,2.68,2.35,2.78,1
+2026-03-02,Boston Celtics @ Milwaukee Bucks,Jaylen Brown,C4,6.5,5.56,-0.94,14.5,UNDER,STRONG UNDER,87,HIGH,0.579,0.13,190,114,114,0.425,0.575,0.948,0.4512,5.68,5.68,4.84,4.94,5
+2026-03-02,Houston Rockets @ Washington Wizards,Tristan Vukcevic,C2,4.5,3.57,-0.93,20.7,UNDER,STRONG UNDER,86,HIGH,0.697,0.34,118,-135,-135,0.444,0.556,0.909,0.3931,3.52,3.52,3.87,3.76,5
+2026-03-02,New York Knicks @ Toronto Raptors,Jakob Poeltl,C3,7.5,9,1.5,20,OVER,STRONG OVER,86,HIGH,0.521,0.09,108,-138,108,0.453,0.547,0.998,0.4981,9.1,9.1,8.44,8.08,2
+2026-03-02,Los Angeles Clippers @ Golden State Warriors,Moses Moody,C2,3.5,2.82,-0.68,19.4,UNDER,STRONG UNDER,84,HIGH,0.339,0.33,200,-125,-125,0.375,0.625,0.978,0.4752,2.77,2.77,3.11,3.59,5
+2026-03-02,New York Knicks @ Toronto Raptors,Josh Hart,C3,7.5,8.84,1.34,17.9,OVER,STRONG OVER,83,HIGH,0.46,0.26,102,-134,102,0.464,0.536,0.998,0.498,8.92,8.92,8.4,8.27,2
+2026-03-02,Los Angeles Clippers @ Golden State Warriors,Brook Lopez,C2,4.5,5.05,0.55,12.2,OVER,STRONG OVER,83,HIGH,0.453,0.19,160,100,160,0.435,0.565,0.888,0.409,5.08,5.08,4.89,3.8,5
+2026-03-02,Los Angeles Clippers @ Golden State Warriors,Draymond Green,C3,5.5,6.48,0.98,17.8,OVER,STRONG OVER,82,HIGH,0.634,0.34,190,-136,190,0.374,0.626,0.939,0.4534,6.63,6.63,5.65,6.97,5
+2026-03-02,Los Angeles Clippers @ Golden State Warriors,Darius Garland,C4,2,2.84,0.84,42,OVER,STRONG OVER,81,HIGH,0.561,0.37,155,130,155,0.474,0.526,0.933,0.4449,2.78,2.78,3.2,4.39,2
+2026-03-02,San Antonio Spurs @ Philadelphia 76ers,De'Aaron Fox,C4,3.5,4.53,1.03,29.4,OVER,STRONG OVER,81,HIGH,0.647,0.41,123,-162,123,0.42,0.58,0.944,0.4492,4.66,4.66,3.82,4.56,2
+2026-03-02,San Antonio Spurs @ Philadelphia 76ers,Julian Champagnie,C2,4.5,3.4,-1.1,24.4,UNDER,STRONG UNDER,81,HIGH,0.433,0.52,-159,122,122,0.577,0.423,0.994,0.4945,3.34,3.34,3.75,3.78,2
+2026-03-02,Los Angeles Clippers @ Golden State Warriors,Brandin Podziemski,C2,6.5,5.43,-1.07,16.5,UNDER,STRONG UNDER,80,HIGH,0.513,0.56,190,-140,-140,0.372,0.628,0.982,0.4784,5.44,5.44,5.39,4.29,5
+2026-03-02,Denver Nuggets @ Utah Jazz,Christian Braun,C2,5.5,4.59,-0.91,16.5,UNDER,STRONG UNDER,80,HIGH,0.731,0.5,190,-132,-132,0.377,0.623,0.893,0.3759,4.43,4.43,5.48,4.75,5
+2026-03-02,Houston Rockets @ Washington Wizards,Tari Eason,C3,7.5,6.38,-1.12,14.9,UNDER,STRONG UNDER,77,HIGH,0.77,0.52,160,-120,-120,0.414,0.586,0.927,0.4197,6.51,6.51,5.63,7.86,5
+2026-03-02,Houston Rockets @ Washington Wizards,Clint Capela,C3,5.5,9.41,3.91,71.1,OVER,OVER,74,MED,1.327,0.03,-105,-118,-105,0.486,0.514,0.998,0.498,9.73,9.73,7.56,8.29,3
+2026-03-02,Houston Rockets @ Washington Wizards,Kevin Durant,C4,5.5,6.19,0.69,12.5,OVER,STRONG OVER,74,HIGH,0.522,0.46,200,-145,200,0.36,0.64,0.907,0.4302,6.34,6.34,5.34,5.44,5
+2026-03-02,San Antonio Spurs @ Philadelphia 76ers,Devin Vassell,C4,3.5,3.91,0.41,11.7,OVER,STRONG OVER,74,HIGH,0.388,0.16,100,-128,100,0.471,0.529,0.855,0.355,3.9,3.9,3.98,4.7,2
+2026-03-02,Los Angeles Clippers @ Golden State Warriors,Kris Dunn,C2,3.5,3.1,-0.4,11.4,UNDER,STRONG UNDER,72,HIGH,0.241,0.5,165,102,102,0.433,0.567,0.909,0.4099,3.16,3.16,2.77,2.95,5
+2026-03-02,Denver Nuggets @ Utah Jazz,Jamal Murray,C4,4.5,3.99,-0.51,11.3,UNDER,STRONG UNDER,72,HIGH,0.424,0.32,210,-140,-140,0.356,0.644,0.885,0.362,3.97,3.97,4.11,4.9,5
+2026-03-02,Boston Celtics @ Milwaukee Bucks,Jericho Sims,C1,6.5,3.68,-2.82,43.4,UNDER,UNDER,71,MED,0.973,0.19,-125,100,100,0.526,0.474,0.998,0.498,3.51,3.51,4.66,3.42,2
+2026-03-02,Boston Celtics @ Milwaukee Bucks,Kyle Kuzma,C4,4.5,5.91,1.41,31.3,OVER,OVER,70,MED,1.253,0.38,190,-130,190,0.379,0.621,0.87,0.4008,6.21,6.21,4.2,4.09,5
+2026-03-02,Houston Rockets @ Washington Wizards,Dorian Finney-Smith,C2,2.5,4.25,1.75,70,OVER,STRONG OVER,68,HIGH,0.45,0.64,-155,115,-155,0.567,0.433,1,0.5,4.34,4.34,3.78,3.79,1
+2026-03-02,Los Angeles Clippers @ Golden State Warriors,Bennedict Mathurin,C2,5.5,4.65,-0.85,15.5,UNDER,UNDER,68,MED,0.978,0.14,122,121,121,0.499,0.501,0.808,0.3247,4.68,4.68,4.48,3.38,5
+2026-03-02,Denver Nuggets @ Utah Jazz,Isaiah Collier,C3,2.5,3.32,0.82,32.8,OVER,OVER,67,MED,1.089,0.43,135,136,135,0.501,0.499,0.774,0.3033,3.31,3.31,3.35,6.34,4
+2026-03-02,Boston Celtics @ Milwaukee Bucks,Kevin Porter Jr.,C2,4.5,3.92,-0.58,12.9,UNDER,UNDER,64,MED,1.052,0.27,140,105,105,0.461,0.539,0.709,0.2159,3.7,3.7,5.12,4.58,5
+2026-03-02,Los Angeles Clippers @ Golden State Warriors,Al Horford,C2,5.5,6.32,0.82,14.9,OVER,OVER,57,MED,1.184,0.52,200,-142,200,0.362,0.638,0.756,0.317,6.22,6.22,6.87,4.79,5
+2026-03-02,San Antonio Spurs @ Philadelphia 76ers,Andre Drummond,C3,9.5,8.6,-0.9,9.5,UNDER,UNDER,57,HIGH,0.79,0.56,-102,-130,-130,0.472,0.528,0.873,0.354,8.58,8.58,8.72,9.12,1
+2026-03-02,San Antonio Spurs @ Philadelphia 76ers,Stephon Castle,C2,4.5,3.79,-0.71,15.8,UNDER,UNDER,50,MED,0.891,0.31,-114,-110,-110,0.504,0.496,0.787,0.2764,3.61,3.61,4.78,3.99,2
+2026-03-02,Denver Nuggets @ Utah Jazz,Cody Williams,C1,2.5,2.23,-0.27,10.8,UNDER,PASS,71,HIGH,0.231,0.46,150,130,130,0.479,0.521,0.816,0.3372,2.29,2.29,1.89,2.22,5
+2026-03-02,Houston Rockets @ Washington Wizards,Alperen Sengun,C3,9.5,9.87,0.37,3.9,OVER,PASS,71,HIGH,0.288,0.29,185,100,185,0.412,0.588,0.891,0.416,9.93,9.93,9.52,9.45,5
+2026-03-02,New York Knicks @ Toronto Raptors,Jalen Brunson,C4,3,3.23,0.23,7.7,OVER,PASS,68,HIGH,0.521,0.11,142,127,142,0.484,0.516,0.671,0.2197,3.29,3.29,2.9,4.1,2
+2026-03-02,Denver Nuggets @ Utah Jazz,Bruce Brown,C2,4.5,4.33,-0.17,3.8,UNDER,PASS,68,HIGH,0.655,0.18,140,104,104,0.459,0.541,0.602,0.1097,4.16,4.16,5.28,4.82,4
+2026-03-02,Denver Nuggets @ Utah Jazz,Brice Sensabaugh,C2,3.5,3.14,-0.36,10.3,UNDER,PASS,67,HIGH,0.703,0.33,128,-165,-165,0.413,0.587,0.696,0.0972,2.99,2.99,3.96,4.09,4
+2026-03-02,New York Knicks @ Toronto Raptors,Immanuel Quickley,C4,3.5,3.76,0.26,7.4,OVER,PASS,67,HIGH,0.191,0.13,-132,108,-132,0.542,0.458,0.807,0.2761,3.74,3.74,3.91,4.29,2
+2026-03-02,New York Knicks @ Toronto Raptors,Mikal Bridges,C4,3.5,3.8,0.3,8.6,OVER,PASS,66,HIGH,0.662,0.13,104,-138,104,0.458,0.542,0.675,0.1813,3.87,3.87,3.39,4.53,1
+2026-03-02,Los Angeles Clippers @ Golden State Warriors,De'Anthony Melton,C2,3.5,3.56,0.06,1.7,OVER,PASS,65,HIGH,0.316,0.19,118,-150,118,0.433,0.567,0.575,0.1074,3.65,3.65,3.07,3.38,4
+2026-03-02,New York Knicks @ Toronto Raptors,Brandon Ingram,C4,5.5,5.24,-0.26,4.7,UNDER,PASS,63,HIGH,0.263,0.17,115,-146,-146,0.439,0.561,0.807,0.2626,5.22,5.22,5.33,5.32,2
+2026-03-02,Boston Celtics @ Milwaukee Bucks,Sam Hauser,C2,3.5,3.4,-0.1,2.9,UNDER,PASS,59,HIGH,0.386,0.43,155,115,115,0.457,0.543,0.602,0.128,3.34,3.34,3.75,4.06,5
+2026-03-02,Houston Rockets @ Washington Wizards,Amen Thompson,C3,7.5,7.38,-0.12,1.6,UNDER,PASS,57,HIGH,0.479,0.43,180,110,110,0.429,0.571,0.599,0.1172,7.44,7.44,7.03,8.51,5
+2026-03-02,Boston Celtics @ Milwaukee Bucks,Payton Pritchard,C2,3.5,3.55,0.05,1.4,OVER,PASS,57,HIGH,0.41,0.48,180,-118,180,0.398,0.602,0.549,0.1492,3.51,3.51,3.75,3.78,5
+2026-03-02,San Antonio Spurs @ Philadelphia 76ers,Tyrese Maxey,C4,3.5,3.51,0.01,0.3,OVER,PASS,56,HIGH,0.606,0.23,-112,-102,-112,0.511,0.489,0.507,0,3.57,3.57,3.16,4.44,2
+2026-03-02,Boston Celtics @ Milwaukee Bucks,Derrick White,C4,4.5,4.49,-0.01,0.2,UNDER,PASS,55,HIGH,0.547,0.46,210,125,125,0.421,0.579,0.507,0.0563,4.38,4.38,5.1,5.58,5
+2026-03-02,Los Angeles Clippers @ Golden State Warriors,Kawhi Leonard,C4,6.5,6.09,-0.41,6.3,UNDER,PASS,54,HIGH,0.526,0.64,170,-110,-110,0.414,0.586,0.782,0.2711,6.05,6.05,6.34,5.59,5
+2026-03-02,New York Knicks @ Toronto Raptors,OG Anunoby,C4,4.5,4.63,0.13,2.9,OVER,PASS,50,HIGH,0.402,0.31,-130,100,-130,0.531,0.469,0.627,0.071,4.57,4.57,5,5.39,2
+2026-03-02,Denver Nuggets @ Utah Jazz,Kyle Filipowski,C2,8.5,6.61,-1.89,22.2,UNDER,PASS,43,LOW,2.012,0.64,165,102,102,0.433,0.567,0.826,0.3277,6.15,6.15,9.16,6.52,5
+2026-03-02,New York Knicks @ Toronto Raptors,Scottie Barnes,C4,7.5,7.8,0.3,4,OVER,PASS,42,MED,1.012,0.14,101,-128,101,0.47,0.53,0.617,0.1189,7.94,7.94,6.97,5.19,2
+2026-03-02,San Antonio Spurs @ Philadelphia 76ers,Victor Wembanyama,C4,11.5,10.81,-0.69,6,UNDER,PASS,30,LOW,1.531,0.14,-102,-129,-129,0.473,0.527,0.674,0.1267,10.76,10.76,11.13,7.35,2
+2026-03-02,New York Knicks @ Toronto Raptors,Karl-Anthony Towns,C4,11.5,10.81,-0.69,6,UNDER,PASS,20,LOW,1.518,0.33,-118,-106,-106,0.513,0.487,0.675,0.1653,10.71,10.71,11.36,7.75,2
