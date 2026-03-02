@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 <title>CTB Analytics — NBA Props</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --bg:       #0d0f12;
@@ -13,18 +14,22 @@
   --surface2: #1e2229;
   --border:   #2a2f38;
   --text:     #e8eaf0;
-  --muted:    #6b7280;
+  --muted:    #9097a3;
+  --muted2:   #707784;
   --accent:   #22c55e;
   --accent-d: #166534;
   --blue:     #3b82f6;
   --blue-d:   #1e3a5f;
   --warn:     #f59e0b;
   --danger:   #ef4444;
+  --gold:     #d4af37;
+  --gold-soft:#e6c866;
   --mono:     'IBM Plex Mono', monospace;
   --sans:     'IBM Plex Sans', sans-serif;
-  --r:        6px;
+  --r:        8px;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
   font-family: var(--sans);
   background: var(--bg);
@@ -35,36 +40,68 @@ body {
 
 /* HEADER */
 header {
-  padding: 20px 24px 16px;
+  padding: 18px 24px 14px;
   border-bottom: 1px solid var(--border);
   background: var(--surface);
 }
+
+.header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.header-copy {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
 .brand {
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: var(--gold);
   margin-bottom: 2px;
 }
+
 .site-title {
   font-size: 22px;
   font-weight: 600;
-  color: var(--text);
+  color: #ffffff;
   letter-spacing: -0.3px;
   line-height: 1.1;
 }
+
 .site-date {
   font-size: 12px;
   font-style: italic;
   color: #ffffff;
-  margin-top: 3px;
+  margin-top: 4px;
 }
+
 #updated {
   font-size: 12px;
-  font-style: italic;
-  color: #ffffff;
-  margin-top: 3px;
+  font-style: normal;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.header-logo {
+  flex: 0 0 auto;
+  width: 74px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 /* RECORDS */
@@ -74,19 +111,23 @@ header {
   border-bottom: 1px solid var(--border);
   background: var(--surface);
 }
+
 .rec {
   padding: 12px 20px;
   border-right: 1px solid var(--border);
 }
+
 .rec:last-child { border-right: none; }
+
 .rec-label {
   font-size: 9px;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--muted2);
   margin-bottom: 5px;
 }
+
 .rec-val {
   font-family: var(--mono);
   font-size: 20px;
@@ -94,50 +135,74 @@ header {
   color: var(--text);
   line-height: 1;
 }
+
 .rec-sub {
   font-family: var(--mono);
   font-size: 10px;
-  color: var(--muted);
+  color: var(--muted2);
   margin-top: 3px;
 }
-.pos { color: var(--accent); }
-.neg { color: var(--danger); }
 
 /* TABS */
-.tabs {
-  display: flex;
+.tabs-wrap {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  padding: 12px 12px 10px;
 }
-.tabs::-webkit-scrollbar { display: none; }
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .tab {
-  padding: 12px 18px;
+  padding: 10px 14px;
+  min-width: 112px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface2);
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--muted);
   cursor: pointer;
-  border-bottom: 2px solid transparent;
   white-space: nowrap;
-  transition: color 0.15s;
+  transition: 0.15s ease;
   user-select: none;
-  flex-shrink: 0;
+  text-align: center;
 }
-.tab:hover { color: var(--text); }
-.tab.active { color: var(--text); border-bottom-color: var(--accent); }
+
+.tab:hover {
+  color: var(--text);
+  border-color: #3a404b;
+}
+
+.tab.active {
+  color: #ffffff;
+  border-color: #3fda7a;
+  background: #19261f;
+  box-shadow: inset 0 0 0 1px rgba(34,197,94,0.15);
+}
+
 .tab-ct {
   display: inline-block;
-  background: var(--border);
-  border-radius: 8px;
-  padding: 1px 6px;
+  min-width: 22px;
+  margin-left: 7px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: #2b313b;
+  color: #c9d0db;
   font-size: 10px;
   font-family: var(--mono);
-  margin-left: 5px;
-  color: var(--muted);
+  vertical-align: middle;
 }
-.tab.active .tab-ct { background: var(--accent); color: #000; }
+
+.tab.active .tab-ct {
+  background: var(--accent);
+  color: #09140d;
+}
 
 /* PANEL */
 main { padding: 16px; }
@@ -153,7 +218,11 @@ main { padding: 16px; }
   -webkit-overflow-scrolling: touch;
 }
 
-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
 
 thead th {
   padding: 9px 12px;
@@ -168,10 +237,18 @@ thead th {
   white-space: nowrap;
 }
 
-tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+}
 tbody tr:last-child { border-bottom: none; }
 tbody tr:hover { background: var(--surface2); }
-td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
+
+td {
+  padding: 10px 12px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
 
 /* PICK BADGE */
 .badge {
@@ -197,7 +274,7 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
   font-size: 13px;
   font-weight: 500;
 }
-.es-elite { color: #a78bfa; font-weight: 700; }
+.es-elite { color: #b691ff; font-weight: 700; }
 .es-high  { color: var(--accent); }
 .es-mid   { color: var(--warn); }
 .es-low   { color: var(--muted); }
@@ -212,19 +289,6 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
 }
 .rf-up   { background: #451a03; color: #fb923c; }
 .rf-down { background: #1e1b4b; color: #a5b4fc; }
-.rf-norm { color: var(--muted); }
-
-/* AGREEMENT DOT */
-.adot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  margin-right: 5px;
-}
-.a-HIGH { background: var(--accent); }
-.a-MED  { background: var(--warn); }
-.a-LOW  { background: var(--muted); }
 
 /* EDGE */
 .ev { font-family: var(--mono); font-size: 12px; font-weight: 500; }
@@ -250,10 +314,14 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
   padding: 50px 20px;
   color: var(--muted);
 }
-.empty .icon { font-size: 28px; margin-bottom: 10px; }
+.empty .icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
 
 /* MOBILE CARDS */
 .mobile-cards { display: none; }
+
 .mobile-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -261,6 +329,7 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
   padding: 12px;
   margin-bottom: 10px;
 }
+
 .mobile-card-head {
   display: flex;
   align-items: flex-start;
@@ -268,17 +337,20 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
   gap: 10px;
   margin-bottom: 10px;
 }
+
 .mobile-meta {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
 }
+
 .mobile-stat {
   background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 7px 8px;
 }
+
 .mobile-stat-label {
   font-size: 9px;
   color: var(--muted);
@@ -286,6 +358,7 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
   text-transform: uppercase;
   margin-bottom: 4px;
 }
+
 .mobile-stat-value {
   font-family: var(--mono);
   font-size: 12px;
@@ -297,6 +370,16 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
   header { padding: 14px 14px 12px; }
   main { padding: 10px; }
 
+  .header-top {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .header-logo {
+    width: 54px;
+    height: 54px;
+  }
+
   .site-title { font-size: 18px; }
   .site-date,
   #updated { font-size: 12px; }
@@ -304,17 +387,32 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
   .records {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
   .rec {
     min-width: 0;
     padding: 10px 10px;
     border-right: 1px solid var(--border);
   }
+
   .rec:nth-child(3n) { border-right: none; }
+
   .rec-val { font-size: 15px; }
   .rec-sub { font-size: 9px; }
 
-  .tabs { padding: 0 6px; }
-  .tab { padding: 12px 10px; font-size: 12px; }
+  .tabs-wrap {
+    padding: 10px 8px 8px;
+  }
+
+  .tabs {
+    gap: 8px;
+  }
+
+  .tab {
+    min-width: 96px;
+    padding: 9px 10px;
+    font-size: 12px;
+    border-radius: 10px;
+  }
 
   .desktop-table { display: none; }
   .mobile-cards { display: block; }
@@ -326,10 +424,18 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
 <body>
 
 <header>
-  <div class="brand">CTB Analytics</div>
-  <div class="site-title">NBA Props Sheet</div>
-  <div class="site-date" id="run-date">—</div>
-  <div id="updated">—</div>
+  <div class="header-top">
+    <div class="header-copy">
+      <div class="brand">CTB Analytics</div>
+      <div class="site-title">NBA Props Sheet</div>
+      <div class="site-date" id="run-date">—</div>
+      <div id="updated">Last Run: —</div>
+    </div>
+
+    <div class="header-logo">
+      <img src="assets/ctb-logo.png" alt="CTB Analytics Logo">
+    </div>
+  </div>
 </header>
 
 <div class="records">
@@ -350,10 +456,12 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
   </div>
 </div>
 
-<div class="tabs">
-  <div class="tab active" data-tab="fg3m">Threes <span class="tab-ct" id="ct-fg3m">0</span></div>
-  <div class="tab" data-tab="reb">Rebounds <span class="tab-ct" id="ct-reb">0</span></div>
-  <div class="tab" data-tab="ast">Assists <span class="tab-ct" id="ct-ast">0</span></div>
+<div class="tabs-wrap">
+  <div class="tabs">
+    <div class="tab active" data-tab="fg3m">Threes <span class="tab-ct" id="ct-fg3m">0</span></div>
+    <div class="tab" data-tab="reb">Rebounds <span class="tab-ct" id="ct-reb">0</span></div>
+    <div class="tab" data-tab="ast">Assists <span class="tab-ct" id="ct-ast">0</span></div>
+  </div>
 </div>
 
 <main>
@@ -366,15 +474,15 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
 const GITHUB_USER = 'CameronBroussard6';
 const GITHUB_REPO = 'nba-props-site';
 const BASE = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main`;
-const TARGETS = ['fg3m','reb','ast'];
-const LABELS  = {fg3m:'Threes', reb:'Rebounds', ast:'Assists'};
+const TARGETS = ['fg3m', 'reb', 'ast'];
+const LABELS = { fg3m: 'Threes', reb: 'Rebounds', ast: 'Assists' };
 
 function today() {
-  return new Date().toISOString().slice(0,10);
+  return new Date().toISOString().slice(0, 10);
 }
 
 function ordinal(n) {
-  const s = ['th','st','nd','rd'];
+  const s = ['th', 'st', 'nd', 'rd'];
   const v = n % 100;
   return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
@@ -388,10 +496,10 @@ function fmtDateOrdinal(str) {
 }
 
 function fmtLastRunCentral(dateInput) {
-  if (!dateInput) return '—';
+  if (!dateInput) return 'Last Run: —';
 
   const d = new Date(dateInput);
-  if (isNaN(d.getTime())) return '—';
+  if (isNaN(d.getTime())) return 'Last Run: —';
 
   const parts = new Intl.DateTimeFormat('en-US', {
     timeZone: 'America/Chicago',
@@ -411,7 +519,7 @@ function fmtLastRunCentral(dateInput) {
   const minute = get('minute');
   const dayPeriod = (get('dayPeriod') || '').toLowerCase();
 
-  return `${month} ${ordinal(day)} ${year} ${hour}:${minute} ${dayPeriod} Central`;
+  return `Last Run: ${month} ${ordinal(day)} ${year} ${hour}:${minute} ${dayPeriod} Central`;
 }
 
 async function fetchCSV(url) {
@@ -425,18 +533,32 @@ async function fetchCSV(url) {
 }
 
 function parseCSV(text) {
-  const lines = text.trim().split('\n');
+  const trimmed = text.trim();
+  if (!trimmed) return [];
+
+  const lines = trimmed.split('\n');
   if (lines.length < 2) return [];
-  const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g,''));
+
+  const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
+
   return lines.slice(1).map(line => {
     const vals = [];
     let cur = '', inQ = false;
+
     for (let i = 0; i < line.length; i++) {
-      if (line[i] === '"') { inQ = !inQ; continue; }
-      if (line[i] === ',' && !inQ) { vals.push(cur); cur = ''; continue; }
+      if (line[i] === '"') {
+        inQ = !inQ;
+        continue;
+      }
+      if (line[i] === ',' && !inQ) {
+        vals.push(cur);
+        cur = '';
+        continue;
+      }
       cur += line[i];
     }
     vals.push(cur);
+
     const obj = {};
     headers.forEach((h, i) => obj[h] = (vals[i] || '').trim());
     return obj;
@@ -468,6 +590,7 @@ function computeRec(rows, opts = {}) {
 
 function renderRecords(tracking) {
   if (!tracking || !tracking.length) return;
+
   TARGETS.forEach(t => {
     const r = computeRec(tracking, { target: t });
     document.getElementById(`r-${t}`).textContent = fmtRec(r.w, r.l);
@@ -530,10 +653,11 @@ function buildTable(rows, target) {
   const renderRow = (r) => {
     const edge = parseFloat(r.edge);
     const es = parseFloat(r.edge_score);
+
     return `<tr>
       <td>
         <div class="pname">${r.player_name || '—'}${roleFlagHtml(r.role_flag)}</div>
-        <div class="pgame">${(r.game || '').replace(' @ ',' · ')}</div>
+        <div class="pgame">${(r.game || '').replace(' @ ', ' · ')}</div>
       </td>
       <td><span class="badge ${badgeClass(r.pick)}">${arrow(r.direction)} ${(r.direction || r.pick || 'PASS')}</span></td>
       <td><span class="es ${esClass(r.edge_score)}" style="${edgeScoreStyle(r.edge_score)}">${isNaN(es) ? '—' : es.toFixed(1)}</span></td>
@@ -549,11 +673,12 @@ function buildTable(rows, target) {
   const renderCard = (r) => {
     const edge = parseFloat(r.edge);
     const es = parseFloat(r.edge_score);
+
     return `<div class="mobile-card">
       <div class="mobile-card-head">
         <div>
           <div class="pname">${r.player_name || '—'}${roleFlagHtml(r.role_flag)}</div>
-          <div class="pgame">${(r.game || '').replace(' @ ',' · ')}</div>
+          <div class="pgame">${(r.game || '').replace(' @ ', ' · ')}</div>
         </div>
         <div><span class="badge ${badgeClass(r.pick)}">${arrow(r.direction)} ${(r.direction || r.pick || 'PASS')}</span></div>
       </div>
@@ -574,21 +699,26 @@ function buildTable(rows, target) {
   const passCards = passes.map(r => renderCard(r)).join('');
 
   return `
-    <div class="tbl-wrap desktop-table"><table>
-      <thead><tr>
-        <th>Player</th>
-        <th>Pick</th>
-        <th>Edge Score</th>
-        <th>Agreement</th>
-        <th>Line</th>
-        <th>Model</th>
-        <th>Edge</th>
-        <th class="col-hide-mobile">Last 3</th>
-        <th class="col-hide-mobile">Season</th>
-      </tr></thead>
-      <tbody>${pickRows}${passRows}</tbody>
-    </table></div>
-    <div class="mobile-cards">${pickCards}${passCards}</div>`;
+    <div class="tbl-wrap desktop-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Player</th>
+            <th>Pick</th>
+            <th>Edge Score</th>
+            <th>Agreement</th>
+            <th>Line</th>
+            <th>Model</th>
+            <th>Edge</th>
+            <th class="col-hide-mobile">Last 3</th>
+            <th class="col-hide-mobile">Season</th>
+          </tr>
+        </thead>
+        <tbody>${pickRows}${passRows}</tbody>
+      </table>
+    </div>
+    <div class="mobile-cards">${pickCards}${passCards}</div>
+  `;
 }
 
 async function init() {
@@ -596,6 +726,7 @@ async function init() {
   document.getElementById('run-date').textContent = fmtDateOrdinal(dateStr);
 
   let latestUsedDate = dateStr;
+  let sawAnyData = false;
 
   for (const tgt of TARGETS) {
     const panel = document.getElementById(`panel-${tgt}`);
@@ -606,29 +737,30 @@ async function init() {
 
     if (!rows || !rows.length) {
       const ydDate = new Date(Date.now() - 86400000);
-      const yd = ydDate.toISOString().slice(0,10);
+      const yd = ydDate.toISOString().slice(0, 10);
       rows = await fetchCSV(`${BASE}/data/edge_sheet_${tgt}_${yd}.csv`);
       usedDate = yd;
     }
 
     if (rows && rows.length) {
-      const pickCount = rows.filter(r => r.pick && r.pick !== 'PASS').length;
-      document.getElementById(`ct-${tgt}`).textContent = String(pickCount);
-      panel.innerHTML = buildTable(rows, tgt);
+      sawAnyData = true;
       latestUsedDate = usedDate;
+
+      document.getElementById(`ct-${tgt}`).textContent = String(rows.length); // full count below
+      panel.innerHTML = buildTable(rows, tgt);
     } else {
-      panel.innerHTML = `<div class="empty"><div class="icon">📭</div><p>No data yet for ${LABELS[tgt]}.</p></div>`;
       document.getElementById(`ct-${tgt}`).textContent = '0';
+      panel.innerHTML = `<div class="empty"><div class="icon">📭</div><p>No data yet for ${LABELS[tgt]}.</p></div>`;
     }
   }
 
   const tracking = await fetchCSV(`${BASE}/tracking/picks_log.csv`);
   renderRecords(tracking);
 
-  const lastRunDate = new Date();
-  if (latestUsedDate && latestUsedDate !== today()) {
-    lastRunDate.setTime(new Date(latestUsedDate + 'T12:00:00').getTime());
-  }
+  const lastRunDate = sawAnyData
+    ? new Date()
+    : new Date(latestUsedDate + 'T12:00:00');
+
   document.getElementById('updated').textContent = fmtLastRunCentral(lastRunDate);
 }
 
