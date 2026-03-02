@@ -61,10 +61,10 @@ header {
   margin-top: 3px;
 }
 #updated {
-  font-family: var(--mono);
-  font-size: 10px;
+  font-size: 12px;
+  font-style: italic;
   color: #ffffff;
-  margin-top: 6px;
+  margin-top: 3px;
 }
 
 /* RECORDS */
@@ -252,11 +252,6 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
 }
 .empty .icon { font-size: 28px; margin-bottom: 10px; }
 
-/* SEASON LOG */
-.result-win  { color: var(--accent); font-weight: 600; }
-.result-loss { color: var(--danger); font-weight: 600; }
-.result-push { color: var(--muted); font-weight: 600; }
-
 /* MOBILE CARDS */
 .mobile-cards { display: none; }
 .mobile-card {
@@ -303,7 +298,8 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
   main { padding: 10px; }
 
   .site-title { font-size: 18px; }
-  .site-date { font-size: 12px; }
+  .site-date,
+  #updated { font-size: 12px; }
 
   .records {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -333,7 +329,7 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
   <div class="brand">CTB Analytics</div>
   <div class="site-title">NBA Props Sheet</div>
   <div class="site-date" id="run-date">—</div>
-  <div id="updated"></div>
+  <div id="updated">—</div>
 </header>
 
 <div class="records">
@@ -358,14 +354,12 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
   <div class="tab active" data-tab="fg3m">Threes <span class="tab-ct" id="ct-fg3m">0</span></div>
   <div class="tab" data-tab="reb">Rebounds <span class="tab-ct" id="ct-reb">0</span></div>
   <div class="tab" data-tab="ast">Assists <span class="tab-ct" id="ct-ast">0</span></div>
-  <div class="tab" data-tab="log">Season Log</div>
 </div>
 
 <main>
   <div class="panel active" id="panel-fg3m"></div>
   <div class="panel" id="panel-reb"></div>
   <div class="panel" id="panel-ast"></div>
-  <div class="panel" id="panel-log"></div>
 </main>
 
 <script>
@@ -375,10 +369,13 @@ const BASE = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/ma
 const TARGETS = ['fg3m','reb','ast'];
 const LABELS  = {fg3m:'Threes', reb:'Rebounds', ast:'Assists'};
 
-function today() { return new Date().toISOString().slice(0,10); }
+function today() {
+  return new Date().toISOString().slice(0,10);
+}
 
 function ordinal(n) {
-  const s = ['th','st','nd','rd'], v = n % 100;
+  const s = ['th','st','nd','rd'];
+  const v = n % 100;
   return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
 
@@ -388,6 +385,33 @@ function fmtDateOrdinal(str) {
   const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   return `${days[d.getDay()]}, ${months[d.getMonth()]} ${ordinal(d.getDate())} ${d.getFullYear()}`;
+}
+
+function fmtLastRunCentral(dateInput) {
+  if (!dateInput) return '—';
+
+  const d = new Date(dateInput);
+  if (isNaN(d.getTime())) return '—';
+
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Chicago',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true
+  }).formatToParts(d);
+
+  const get = type => parts.find(p => p.type === type)?.value || '';
+  const month = get('month');
+  const day = Number(get('day'));
+  const year = get('year');
+  const hour = get('hour');
+  const minute = get('minute');
+  const dayPeriod = (get('dayPeriod') || '').toLowerCase();
+
+  return `${month} ${ordinal(day)} ${year} ${hour}:${minute} ${dayPeriod} Central`;
 }
 
 async function fetchCSV(url) {
@@ -423,8 +447,14 @@ function fmt(v, d = 1) {
   const n = parseFloat(v);
   return isNaN(n) ? '—' : n.toFixed(d);
 }
-function fmtRec(w, l) { return (w + l === 0) ? '—' : `${w}-${l}`; }
-function pct(w, l) { return (w + l === 0) ? '—' : `${Math.round(w / (w + l) * 100)}%`; }
+
+function fmtRec(w, l) {
+  return (w + l === 0) ? '—' : `${w}-${l}`;
+}
+
+function pct(w, l) {
+  return (w + l === 0) ? '—' : `${Math.round(w / (w + l) * 100)}%`;
+}
 
 function computeRec(rows, opts = {}) {
   let w = 0, l = 0;
@@ -490,6 +520,7 @@ function buildTable(rows, target) {
   const picks = rows
     .filter(r => r.pick && r.pick !== 'PASS')
     .sort((a, b) => parseFloat(b.edge_score || 0) - parseFloat(a.edge_score || 0));
+
   const passes = rows.filter(r => !r.pick || r.pick === 'PASS');
 
   if (rows.length === 0) {
@@ -506,7 +537,7 @@ function buildTable(rows, target) {
       </td>
       <td><span class="badge ${badgeClass(r.pick)}">${arrow(r.direction)} ${(r.direction || r.pick || 'PASS')}</span></td>
       <td><span class="es ${esClass(r.edge_score)}" style="${edgeScoreStyle(r.edge_score)}">${isNaN(es) ? '—' : es.toFixed(1)}</span></td>
-      <td><span class="adot a-${r.agreement || 'LOW'}"></span><span class="mv">${r.agreement || '—'}</span></td>
+      <td><span class="mv">${r.agreement || '—'}</span></td>
       <td><span class="mv-bright">${fmt(r.line)}</span></td>
       <td><span class="mv-bright">${fmt(r.prediction)}</span></td>
       <td><span class="ev ${edge >= 0 ? 'ep' : 'en'}">${edge >= 0 ? '+' : ''}${fmt(edge, 2)}</span></td>
@@ -560,52 +591,11 @@ function buildTable(rows, target) {
     <div class="mobile-cards">${pickCards}${passCards}</div>`;
 }
 
-function renderLog(tracking) {
-  const panel = document.getElementById('panel-log');
-  if (!tracking || !tracking.length) {
-    panel.innerHTML = `<div class="empty"><div class="icon">📋</div><p>No resolved picks yet — check back after games finish.</p></div>`;
-    return;
-  }
-
-  const resolved = tracking
-    .filter(r => r.result && r.result !== '' && r.result !== 'NA')
-    .sort((a, b) => b.date.localeCompare(a.date));
-
-  if (!resolved.length) {
-    panel.innerHTML = `<div class="empty"><div class="icon">📋</div><p>Picks logged — results will populate after games resolve tonight.</p></div>`;
-    return;
-  }
-
-  const rows = resolved.map(r => {
-    const cls = r.result === 'WIN' ? 'result-win' : r.result === 'LOSS' ? 'result-loss' : 'result-push';
-    const units = parseFloat(r.profit_units);
-    const es = parseFloat(r.edge_score);
-    return `<tr>
-      <td><span class="mv">${r.date}</span></td>
-      <td class="pname">${r.player_name}</td>
-      <td><span class="mv">${LABELS[r.target] || r.target}</span></td>
-      <td><span class="badge ${badgeClass(r.pick)}">${r.pick}</span></td>
-      <td><span class="mv-bright">${fmt(r.line)}</span></td>
-      <td><span class="mv-bright">${fmt(r.actual)}</span></td>
-      <td><span class="${cls}">${r.result}</span></td>
-      <td><span class="es ${esClass(r.edge_score)}" style="${edgeScoreStyle(r.edge_score)}">${isNaN(es) ? '—' : es.toFixed(1)}</span></td>
-      <td><span class="ev ${!isNaN(units) && units >= 0 ? 'ep' : 'en'}">${!isNaN(units) ? (units >= 0 ? '+' : '') + units.toFixed(3) : '—'}</span></td>
-    </tr>`;
-  }).join('');
-
-  panel.innerHTML = `<div class="tbl-wrap"><table>
-    <thead><tr>
-      <th>Date</th><th>Player</th><th>Stat</th><th>Pick</th>
-      <th>Line</th><th>Actual</th><th>Result</th><th>Edge Score</th><th>Units</th>
-    </tr></thead>
-    <tbody>${rows}</tbody>
-  </table></div>`;
-}
-
 async function init() {
   const dateStr = today();
   document.getElementById('run-date').textContent = fmtDateOrdinal(dateStr);
-  document.getElementById('updated').textContent = `Last run: ${dateStr}`;
+
+  let latestUsedDate = dateStr;
 
   for (const tgt of TARGETS) {
     const panel = document.getElementById(`panel-${tgt}`);
@@ -615,18 +605,17 @@ async function init() {
     let usedDate = dateStr;
 
     if (!rows || !rows.length) {
-      const yd = new Date(Date.now() - 86400000).toISOString().slice(0,10);
+      const ydDate = new Date(Date.now() - 86400000);
+      const yd = ydDate.toISOString().slice(0,10);
       rows = await fetchCSV(`${BASE}/data/edge_sheet_${tgt}_${yd}.csv`);
       usedDate = yd;
     }
 
     if (rows && rows.length) {
       const pickCount = rows.filter(r => r.pick && r.pick !== 'PASS').length;
-      document.getElementById(`ct-${tgt}`).textContent = pickCount;
+      document.getElementById(`ct-${tgt}`).textContent = String(pickCount);
       panel.innerHTML = buildTable(rows, tgt);
-      if (usedDate !== dateStr) {
-        document.getElementById('updated').textContent = `Last run: ${usedDate}`;
-      }
+      latestUsedDate = usedDate;
     } else {
       panel.innerHTML = `<div class="empty"><div class="icon">📭</div><p>No data yet for ${LABELS[tgt]}.</p></div>`;
       document.getElementById(`ct-${tgt}`).textContent = '0';
@@ -635,7 +624,12 @@ async function init() {
 
   const tracking = await fetchCSV(`${BASE}/tracking/picks_log.csv`);
   renderRecords(tracking);
-  renderLog(tracking);
+
+  const lastRunDate = new Date();
+  if (latestUsedDate && latestUsedDate !== today()) {
+    lastRunDate.setTime(new Date(latestUsedDate + 'T12:00:00').getTime());
+  }
+  document.getElementById('updated').textContent = fmtLastRunCentral(lastRunDate);
 }
 
 document.querySelectorAll('.tab').forEach(t => {
