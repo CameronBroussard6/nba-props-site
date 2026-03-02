@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 <title>CTB Analytics — NBA Props</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg:        #0d0f12;
@@ -181,15 +181,13 @@ main { padding: 16px; }
 
 .badge {
   display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 4px 8px;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 5px 8px 5px 7px;
   border-radius: 4px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.03em;
   font-family: var(--mono);
-  line-height: 1.1;
+  line-height: 1.05;
+  min-width: 115px;
 }
 .b-over, .b-str-over {
   background: #14532d;
@@ -206,9 +204,27 @@ main { padding: 16px; }
   color: var(--muted);
   border: 1px solid var(--border);
 }
+.badge-arrow {
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  padding-top: 1px;
+}
+.badge-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.badge-main {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
 .badge-stat {
-  font-size: 9px;
+  font-size: 8px;
   opacity: 0.92;
+  line-height: 1;
 }
 
 .es {
@@ -223,7 +239,7 @@ main { padding: 16px; }
   font-family: var(--mono);
   margin-top: 1px;
   white-space: normal;
-  line-height: 1.25;
+  line-height: 1.3;
 }
 .mv {
   font-family: var(--mono);
@@ -275,8 +291,8 @@ main { padding: 16px; }
 }
 .mobile-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 182px;
-  gap: 10px;
+  grid-template-columns: minmax(0, 1fr) 196px;
+  gap: 8px;
   align-items: stretch;
 }
 .mobile-left {
@@ -297,7 +313,7 @@ main { padding: 16px; }
   min-height: 74px;
 }
 .mobile-stat.edge-box {
-  min-height: 46px;
+  min-height: 44px;
 }
 .mobile-stat-label {
   font-size: 9px;
@@ -305,6 +321,10 @@ main { padding: 16px; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 5px;
+}
+.mobile-stat-label.tiny {
+  font-size: 8px;
+  letter-spacing: 0.06em;
 }
 .mobile-stat-value {
   font-family: var(--mono);
@@ -315,7 +335,7 @@ main { padding: 16px; }
   background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: 6px;
-  padding: 8px;
+  padding: 8px 7px 8px 6px;
   min-height: 196px;
   display: flex;
   flex-direction: column;
@@ -531,13 +551,22 @@ function badgeClass(r) {
   if (side === 'UNDER') return 'b-under';
   return 'b-pass';
 }
-function badgeLabel(r, target) {
+function badgeHTML(r, target) {
   const side = normalizePick(r);
-  const line = fmt(r.line, 1);
   const stat = LABELS[target] || '';
-  if (side === 'OVER') return `↑ Over ${line} <span class="badge-stat">${stat}</span>`;
-  if (side === 'UNDER') return `↓ Under ${line} <span class="badge-stat">${stat}</span>`;
-  return 'PASS';
+  const line = fmt(r.line, 1);
+  if (side === 'PASS') return 'PASS';
+  const arrow = side === 'OVER' ? '↑' : '↓';
+  const main = `${side === 'OVER' ? 'Over' : 'Under'} ${line}`;
+  return `
+    <span class="badge ${badgeClass(r)}">
+      <span class="badge-arrow">${arrow}</span>
+      <span class="badge-copy">
+        <span class="badge-main">${main}</span>
+        <span class="badge-stat">${stat}</span>
+      </span>
+    </span>
+  `;
 }
 function edgeScoreStyle(score) {
   const n = parseFloat(score);
@@ -553,15 +582,27 @@ function agScoreStyle(score) {
   if (Number.isNaN(n)) return 'color:#9097a3;font-weight:600;';
   const clamped = Math.max(0, Math.min(1, n));
   const hue = 0 + (clamped * 120);
-  const sat = 48;
-  const light = 63 - (clamped * 5);
+  const sat = 44;
+  const light = 64 - (clamped * 7);
   return `color:hsl(${hue}, ${sat}%, ${light}%); font-weight:700;`;
+}
+function agScoreDisplay(score) {
+  const n = parseFloat(score);
+  if (Number.isNaN(n)) return '—';
+  return `${Math.round(n * 100)}%`;
 }
 function roleFlagHtml(flag) {
   if (!flag || flag === 'NORMAL') return '';
-  const cls = flag === 'ROLE_UP' ? 'rf-up' : 'rf-down';
-  const lbl = flag === 'ROLE_UP' ? '▲ ROLE UP' : '▼ ROLE DN';
-  return ` <span class="rflag ${cls}">${lbl}</span>`;
+  return '';
+}
+function formatGameStack(game) {
+  if (!game) return '—';
+  if (!game.includes('@')) return game;
+  const parts = game.split('@');
+  if (parts.length < 2) return game;
+  const away = parts[0].trim();
+  const home = parts.slice(1).join('@').trim();
+  return `${away} @<br>${home}`;
 }
 function parseLast7(valsStr) {
   if (!valsStr) return [];
@@ -574,12 +615,12 @@ function renderLast7Chart(valsStr, line) {
     return `<div class="mv" style="padding-top:26px;">No recent data</div>`;
   }
 
-  const W = 186;
+  const W = 202;
   const H = 168;
-  const padL = 2;
-  const padR = 2;
+  const padL = 1;
+  const padR = 1;
   const padT = 8;
-  const padB = 16;
+  const padB = 14;
   const chartW = W - padL - padR;
   const chartH = H - padT - padB;
 
@@ -626,10 +667,10 @@ function buildTable(rows, target) {
       <div class="mobile-card-inner">
         <div class="mobile-card-head">
           <div>
-            <div class="pname">${r.player_name || '—'}${roleFlagHtml(r.role_flag)}</div>
-            <div class="pgame">${r.game || '—'}</div>
+            <div class="pname">${r.player_name || '—'}</div>
+            <div class="pgame">${formatGameStack(r.game || '')}</div>
           </div>
-          <div><span class="badge ${badgeClass(r)}">${badgeLabel(r, target)}</span></div>
+          <div>${badgeHTML(r, target)}</div>
         </div>
 
         <div class="mobile-body">
@@ -638,13 +679,13 @@ function buildTable(rows, target) {
               <div class="mobile-stat-label">Edge Score</div>
               <div class="mobile-stat-value es" style="${edgeScoreStyle(r.edge_score)}">${fmt(r.edge_score, 1)}</div>
               <div class="mobile-stat-label" style="margin-top:7px;">AG Score</div>
-              <div class="mobile-stat-value es" style="${agScoreStyle(r.ag_score)}">${fmt(r.ag_score, 2)}</div>
+              <div class="mobile-stat-value es" style="${agScoreStyle(r.ag_score)}">${agScoreDisplay(r.ag_score)}</div>
             </div>
 
             <div class="mobile-stat mid-box">
               <div class="mobile-stat-label">Market Line</div>
               <div class="mobile-stat-value">${fmt(r.line, 1)}</div>
-              <div class="mobile-stat-label" style="margin-top:7px;">Model Prediction</div>
+              <div class="mobile-stat-label tiny" style="margin-top:7px;">Model Prediction</div>
               <div class="mobile-stat-value">${fmt(r.prediction, 1)}</div>
             </div>
 
