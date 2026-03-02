@@ -38,7 +38,6 @@ body {
   font-size: 14px;
 }
 
-/* HEADER */
 header {
   padding: 18px 24px 14px;
   border-bottom: 1px solid var(--border);
@@ -104,7 +103,6 @@ header {
   display: block;
 }
 
-/* RECORDS */
 .records {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -143,7 +141,6 @@ header {
   margin-top: 3px;
 }
 
-/* TABS */
 .tabs-wrap {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
@@ -204,12 +201,10 @@ header {
   color: #09140d;
 }
 
-/* PANEL */
 main { padding: 16px; }
 .panel { display: none; }
 .panel.active { display: block; }
 
-/* TABLE WRAPPER */
 .tbl-wrap {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -251,7 +246,6 @@ td {
   white-space: nowrap;
 }
 
-/* PICK BADGE */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -284,7 +278,6 @@ td {
   border: 1px solid var(--border);
 }
 
-/* EDGE SCORE */
 .es {
   font-family: var(--mono);
   font-size: 13px;
@@ -295,7 +288,6 @@ td {
 .es-mid   { color: var(--warn); }
 .es-low   { color: var(--muted); }
 
-/* ROLE FLAG */
 .rflag {
   display: inline-block;
   font-size: 10px;
@@ -306,25 +298,23 @@ td {
 .rf-up   { background: #451a03; color: #fb923c; }
 .rf-down { background: #1e1b4b; color: #a5b4fc; }
 
-/* EDGE */
 .ev { font-family: var(--mono); font-size: 12px; font-weight: 500; }
 .ep { color: var(--accent); }
 .en { color: #f87171; }
 
-/* PLAYER CELL */
 .pname { font-weight: 500; font-size: 13px; }
 .pgame {
   font-size: 10px;
   color: var(--muted);
   font-family: var(--mono);
   margin-top: 1px;
+  white-space: normal;
+  line-height: 1.25;
 }
 
-/* MONO VALUE */
 .mv { font-family: var(--mono); font-size: 12px; color: var(--muted); }
 .mv-bright { font-family: var(--mono); font-size: 13px; color: var(--text); }
 
-/* EMPTY STATE */
 .empty {
   text-align: center;
   padding: 50px 20px;
@@ -335,7 +325,6 @@ td {
   margin-bottom: 10px;
 }
 
-/* MOBILE CARDS */
 .mobile-cards { display: none; }
 
 .mobile-card {
@@ -354,9 +343,16 @@ td {
   margin-bottom: 10px;
 }
 
-.mobile-meta {
+.mobile-body {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr) 150px;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.mobile-left {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 8px;
 }
 
@@ -364,7 +360,8 @@ td {
   background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: 6px;
-  padding: 7px 8px;
+  padding: 8px 9px;
+  min-height: 58px;
 }
 
 .mobile-stat-label {
@@ -372,7 +369,7 @@ td {
   color: var(--muted);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
 }
 
 .mobile-stat-value {
@@ -381,7 +378,44 @@ td {
   color: var(--text);
 }
 
-/* MOBILE */
+.mobile-stat-sub {
+  margin-top: 4px;
+  font-size: 10px;
+  color: var(--muted);
+  font-family: var(--mono);
+}
+
+.mobile-chart-box {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-chart-title {
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.last7-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  flex: 1 1 auto;
+}
+
+.desktop-table .game-cell {
+  max-width: 260px;
+  white-space: normal;
+  line-height: 1.25;
+}
+
 @media (max-width: 600px) {
   header { padding: 14px 14px 12px; }
   main { padding: 10px; }
@@ -432,8 +466,6 @@ td {
 
   .desktop-table { display: none; }
   .mobile-cards { display: block; }
-  .mobile-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .col-hide-mobile { display: none; }
 }
 </style>
 </head>
@@ -663,6 +695,66 @@ function roleFlagHtml(flag) {
   return ` <span class="rflag ${cls}">${lbl}</span>`;
 }
 
+function parseLast7(valsStr) {
+  if (!valsStr) return [];
+  return valsStr
+    .split('|')
+    .map(v => parseFloat(v))
+    .filter(v => !Number.isNaN(v));
+}
+
+function renderLast7Chart(valsStr, line) {
+  const vals = parseLast7(valsStr);
+  const lineVal = parseFloat(line);
+
+  if (!vals.length || Number.isNaN(lineVal)) {
+    return `<div class="mv" style="padding-top:20px;">No recent data</div>`;
+  }
+
+  const W = 140;
+  const H = 150;
+  const padL = 8;
+  const padR = 6;
+  const padT = 8;
+  const padB = 16;
+  const chartW = W - padL - padR;
+  const chartH = H - padT - padB;
+
+  const maxVal = Math.max(...vals, lineVal, 1);
+  const topMax = maxVal * 1.15;
+
+  const yScale = v => padT + chartH - (v / topMax) * chartH;
+  const lineY = yScale(lineVal);
+
+  const n = vals.length;
+  const gap = 4;
+  const barW = Math.max(8, Math.floor((chartW - gap * (n - 1)) / n));
+
+  let bars = '';
+  vals.forEach((v, i) => {
+    const x = padL + i * (barW + gap);
+    const y = yScale(v);
+    const h = Math.max(2, padT + chartH - y);
+    const fill = v >= lineVal ? '#3b82f6' : '#475569';
+    bars += `<rect x="${x}" y="${y}" width="${barW}" height="${h}" rx="2" fill="${fill}" />`;
+  });
+
+  let xLabels = '';
+  vals.forEach((_, i) => {
+    const x = padL + i * (barW + gap) + barW / 2;
+    xLabels += `<text x="${x}" y="${H - 4}" text-anchor="middle" font-size="8" fill="#707784" font-family="IBM Plex Mono">G${i + 1}</text>`;
+  });
+
+  return `
+    <svg viewBox="0 0 ${W} ${H}" class="last7-svg" preserveAspectRatio="none">
+      <line x1="${padL}" y1="${lineY}" x2="${W - padR}" y2="${lineY}"
+            stroke="#facc15" stroke-width="2" stroke-dasharray="5 3" />
+      ${bars}
+      ${xLabels}
+    </svg>
+  `;
+}
+
 function buildTable(rows, target) {
   const pickedRows = rows
     .filter(r => normalizePick(r) !== 'PASS')
@@ -681,16 +773,18 @@ function buildTable(rows, target) {
     return `<tr>
       <td>
         <div class="pname">${r.player_name || '—'}${roleFlagHtml(r.role_flag)}</div>
-        <div class="pgame">${(r.game || '').replace(' @ ', ' · ')}</div>
+        <div class="pgame game-cell">${r.game || '—'}</div>
       </td>
       <td><span class="badge ${badgeClass(r)}">${badgeLabel(r)}</span></td>
-      <td><span class="es ${esClass(r.edge_score)}" style="${edgeScoreStyle(r.edge_score)}">${isNaN(es) ? '—' : es.toFixed(1)}</span></td>
-      <td><span class="mv">${r.agreement || '—'}</span></td>
-      <td><span class="mv-bright">${fmt(r.line)}</span></td>
-      <td><span class="mv-bright">${fmt(r.prediction)}</span></td>
+      <td>
+        <div><span class="es ${esClass(r.edge_score)}" style="${edgeScoreStyle(r.edge_score)}">${isNaN(es) ? '—' : es.toFixed(1)}</span></div>
+        <div class="mv">${r.agreement || '—'}</div>
+      </td>
+      <td>
+        <div class="mv-bright">${fmt(r.line)}</div>
+        <div class="mv">Model ${fmt(r.prediction)}</div>
+      </td>
       <td><span class="ev ${edge >= 0 ? 'ep' : 'en'}">${edge >= 0 ? '+' : ''}${fmt(edge, 2)}</span></td>
-      <td class="col-hide-mobile"><span class="mv">${fmt(r.m8_last3)}</span></td>
-      <td class="col-hide-mobile"><span class="mv">${fmt(r.m4_mean)}</span></td>
     </tr>`;
   };
 
@@ -702,17 +796,39 @@ function buildTable(rows, target) {
       <div class="mobile-card-head">
         <div>
           <div class="pname">${r.player_name || '—'}${roleFlagHtml(r.role_flag)}</div>
-          <div class="pgame">${(r.game || '').replace(' @ ', ' · ')}</div>
+          <div class="pgame">${r.game || '—'}</div>
         </div>
         <div><span class="badge ${badgeClass(r)}">${badgeLabel(r)}</span></div>
       </div>
-      <div class="mobile-meta">
-        <div class="mobile-stat"><div class="mobile-stat-label">Edge Score</div><div class="mobile-stat-value ${esClass(r.edge_score)}" style="${edgeScoreStyle(r.edge_score)}">${isNaN(es) ? '—' : es.toFixed(1)}</div></div>
-        <div class="mobile-stat"><div class="mobile-stat-label">Agreement</div><div class="mobile-stat-value">${r.agreement || '—'}</div></div>
-        <div class="mobile-stat"><div class="mobile-stat-label">Line</div><div class="mobile-stat-value">${fmt(r.line)}</div></div>
-        <div class="mobile-stat"><div class="mobile-stat-label">Model</div><div class="mobile-stat-value">${fmt(r.prediction)}</div></div>
-        <div class="mobile-stat"><div class="mobile-stat-label">Edge</div><div class="mobile-stat-value ${edge >= 0 ? 'ep' : 'en'}">${edge >= 0 ? '+' : ''}${fmt(edge, 2)}</div></div>
-        <div class="mobile-stat"><div class="mobile-stat-label">Last 3</div><div class="mobile-stat-value">${fmt(r.m8_last3)}</div></div>
+
+      <div class="mobile-body">
+        <div class="mobile-left">
+          <div class="mobile-stat">
+            <div class="mobile-stat-label">Edge Score</div>
+            <div class="mobile-stat-value ${esClass(r.edge_score)}" style="${edgeScoreStyle(r.edge_score)}">
+              ${isNaN(es) ? '—' : es.toFixed(1)}
+            </div>
+            <div class="mobile-stat-sub">${r.agreement || '—'}</div>
+          </div>
+
+          <div class="mobile-stat">
+            <div class="mobile-stat-label">Line</div>
+            <div class="mobile-stat-value">${fmt(r.line)}</div>
+            <div class="mobile-stat-sub">Model ${fmt(r.prediction)}</div>
+          </div>
+
+          <div class="mobile-stat">
+            <div class="mobile-stat-label">Edge</div>
+            <div class="mobile-stat-value ${edge >= 0 ? 'ep' : 'en'}">
+              ${edge >= 0 ? '+' : ''}${fmt(edge, 2)}
+            </div>
+          </div>
+        </div>
+
+        <div class="mobile-chart-box">
+          <div class="mobile-chart-title">Last 7</div>
+          ${renderLast7Chart(r.last7_vals, r.line)}
+        </div>
       </div>
     </div>`;
   };
@@ -730,12 +846,8 @@ function buildTable(rows, target) {
             <th>Player</th>
             <th>Pick</th>
             <th>Edge Score</th>
-            <th>Agreement</th>
             <th>Line</th>
-            <th>Model</th>
             <th>Edge</th>
-            <th class="col-hide-mobile">Last 3</th>
-            <th class="col-hide-mobile">Season</th>
           </tr>
         </thead>
         <tbody>${pickedRowsHtml}${passRowsHtml}</tbody>
@@ -780,10 +892,7 @@ async function init() {
   const tracking = await fetchCSV(`${BASE}/tracking/picks_log.csv`);
   renderRecords(tracking);
 
-  const lastRunDate = sawAnyData
-    ? new Date()
-    : new Date(latestUsedDate + 'T12:00:00');
-
+  const lastRunDate = sawAnyData ? new Date() : new Date(latestUsedDate + 'T12:00:00');
   document.getElementById('updated').textContent = fmtLastRunCentral(lastRunDate);
 }
 
