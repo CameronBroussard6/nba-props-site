@@ -182,13 +182,14 @@ main { padding: 16px; }
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 2px 8px;
-  border-radius: 3px;
+  gap: 5px;
+  padding: 4px 8px;
+  border-radius: 4px;
   font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   font-family: var(--mono);
+  line-height: 1.1;
 }
 .b-over, .b-str-over {
   background: #14532d;
@@ -204,6 +205,10 @@ main { padding: 16px; }
   background: var(--surface2);
   color: var(--muted);
   border: 1px solid var(--border);
+}
+.badge-stat {
+  font-size: 9px;
+  opacity: 0.92;
 }
 
 .es {
@@ -258,17 +263,6 @@ main { padding: 16px; }
   margin-bottom: 12px;
   overflow: hidden;
 }
-.card-stat-bar {
-  border-top: 1px solid #3a404b;
-  border-bottom: 1px solid var(--border);
-  background: linear-gradient(180deg, #181c23 0%, #141820 100%);
-  padding: 5px 10px;
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #d5d9e0;
-  font-weight: 700;
-}
 .mobile-card-inner {
   padding: 12px;
 }
@@ -281,7 +275,7 @@ main { padding: 16px; }
 }
 .mobile-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 164px;
+  grid-template-columns: minmax(0, 1fr) 182px;
   gap: 10px;
   align-items: stretch;
 }
@@ -303,7 +297,7 @@ main { padding: 16px; }
   min-height: 74px;
 }
 .mobile-stat.edge-box {
-  min-height: 54px;
+  min-height: 46px;
 }
 .mobile-stat-label {
   font-size: 9px;
@@ -317,18 +311,12 @@ main { padding: 16px; }
   font-size: 12px;
   color: var(--text);
 }
-.mobile-stat-sub {
-  margin-top: 4px;
-  font-size: 10px;
-  color: var(--muted);
-  font-family: var(--mono);
-}
 .mobile-chart-box {
   background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 8px;
-  min-height: 210px;
+  min-height: 196px;
   display: flex;
   flex-direction: column;
 }
@@ -543,10 +531,12 @@ function badgeClass(r) {
   if (side === 'UNDER') return 'b-under';
   return 'b-pass';
 }
-function badgeLabel(r) {
+function badgeLabel(r, target) {
   const side = normalizePick(r);
-  if (side === 'OVER') return '↑ OVER';
-  if (side === 'UNDER') return '↓ UNDER';
+  const line = fmt(r.line, 1);
+  const stat = LABELS[target] || '';
+  if (side === 'OVER') return `↑ Over ${line} <span class="badge-stat">${stat}</span>`;
+  if (side === 'UNDER') return `↓ Under ${line} <span class="badge-stat">${stat}</span>`;
   return 'PASS';
 }
 function edgeScoreStyle(score) {
@@ -563,7 +553,9 @@ function agScoreStyle(score) {
   if (Number.isNaN(n)) return 'color:#9097a3;font-weight:600;';
   const clamped = Math.max(0, Math.min(1, n));
   const hue = 0 + (clamped * 120);
-  return `color:hsl(${hue}, 80%, 60%); font-weight:700;`;
+  const sat = 48;
+  const light = 63 - (clamped * 5);
+  return `color:hsl(${hue}, ${sat}%, ${light}%); font-weight:700;`;
 }
 function roleFlagHtml(flag) {
   if (!flag || flag === 'NORMAL') return '';
@@ -582,10 +574,10 @@ function renderLast7Chart(valsStr, line) {
     return `<div class="mv" style="padding-top:26px;">No recent data</div>`;
   }
 
-  const W = 168;
+  const W = 186;
   const H = 168;
-  const padL = 4;
-  const padR = 4;
+  const padL = 2;
+  const padR = 2;
   const padT = 8;
   const padB = 16;
   const chartW = W - padL - padR;
@@ -599,7 +591,7 @@ function renderLast7Chart(valsStr, line) {
 
   const n = vals.length;
   const gap = 3;
-  const barW = Math.max(10, Math.floor((chartW - gap * (n - 1)) / n));
+  const barW = Math.max(11, Math.floor((chartW - gap * (n - 1)) / n));
 
   let bars = '';
   vals.forEach((v, i) => {
@@ -629,17 +621,15 @@ function buildTable(rows, target) {
 
   const renderCard = (r) => {
     const edge = parseFloat(r.edge);
-    const statLabel = LABELS[target].toUpperCase();
 
     return `<div class="mobile-card">
-      <div class="card-stat-bar">${statLabel}</div>
       <div class="mobile-card-inner">
         <div class="mobile-card-head">
           <div>
             <div class="pname">${r.player_name || '—'}${roleFlagHtml(r.role_flag)}</div>
             <div class="pgame">${r.game || '—'}</div>
           </div>
-          <div><span class="badge ${badgeClass(r)}">${badgeLabel(r)}</span></div>
+          <div><span class="badge ${badgeClass(r)}">${badgeLabel(r, target)}</span></div>
         </div>
 
         <div class="mobile-body">
