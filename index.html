@@ -216,14 +216,75 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
 .result-loss { color: var(--danger); font-weight: 600; }
 .result-push { color: var(--muted); font-weight: 600; }
 
+/* RESPONSIVE TABLE / CARDS */
+.mobile-cards { display: none; }
+.mobile-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 12px;
+  margin-bottom: 10px;
+}
+.mobile-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.mobile-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.mobile-stat {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 7px 8px;
+}
+.mobile-stat-label {
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.mobile-stat-value {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text);
+}
+
 /* MOBILE OVERRIDES */
 @media (max-width: 600px) {
   header { padding: 14px 14px 12px; }
   main { padding: 10px; }
-  .rec { min-width: 90px; padding: 10px 12px; }
-  .rec-val { font-size: 16px; }
-  td, th { padding: 8px 9px !important; }
-  /* On mobile hide lower-priority columns */
+
+  .site-title { font-size: 18px; }
+  .site-date { font-size: 12px; }
+
+  .records {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow: visible;
+  }
+  .rec {
+    min-width: 0;
+    padding: 10px 10px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .rec:nth-child(3n) { border-right: none; }
+  .rec-val { font-size: 15px; }
+  .rec-sub { font-size: 9px; }
+
+  .tabs { padding: 0 6px; }
+  .tab { padding: 12px 10px; font-size: 12px; }
+
+  .desktop-table { display: none; }
+  .mobile-cards { display: block; }
+  .mobile-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .col-hide-mobile { display: none; }
 }
 </style>
@@ -423,26 +484,57 @@ function buildTable(rows, target) {
     </tr>`;
   };
 
+  const renderCard = (r, isPass) => {
+    const edge = parseFloat(r.edge);
+    const es   = parseFloat(r.edge_score);
+    const op   = isPass ? 'opacity:0.45;' : '';
+    return `<div class="mobile-card" style="${op}">
+      <div class="mobile-card-head">
+        <div>
+          <div class="pname">${r.player_name||'—'}${roleFlagHtml(r.role_flag)}</div>
+          <div class="pgame">${(r.game||'').replace(' @ ',' · ')}</div>
+        </div>
+        <div><span class="badge ${badgeClass(r.pick)}">${arrow(r.direction)} ${(r.direction||r.pick||'PASS')}</span></div>
+      </div>
+      <div class="mobile-meta">
+        <div class="mobile-stat"><div class="mobile-stat-label">Edge Score</div><div class="mobile-stat-value ${esClass(r.edge_score)}">${isNaN(es)?'—':es.toFixed(1)}</div></div>
+        <div class="mobile-stat"><div class="mobile-stat-label">Agreement</div><div class="mobile-stat-value">${r.agreement||'—'}</div></div>
+        <div class="mobile-stat"><div class="mobile-stat-label">Line</div><div class="mobile-stat-value">${fmt(r.line)}</div></div>
+        <div class="mobile-stat"><div class="mobile-stat-label">Model</div><div class="mobile-stat-value">${fmt(r.prediction)}</div></div>
+        <div class="mobile-stat"><div class="mobile-stat-label">Edge</div><div class="mobile-stat-value ${edge>=0?'ep':'en'}">${edge>=0?'+':''}${fmt(edge,2)}</div></div>
+        <div class="mobile-stat"><div class="mobile-stat-label">Last 3</div><div class="mobile-stat-value">${fmt(r.m8_last3)}</div></div>
+      </div>
+    </div>`;
+  };
+
   const pickRows  = picks.map(r => renderRow(r, false)).join('');
   const passDiv   = passes.length > 0
     ? `<tr class="sec-div"><td colspan="9">No pick — other players</td></tr>` +
       passes.map(r => renderRow(r, true)).join('')
     : '';
 
-  return `<div class="tbl-wrap"><table>
-    <thead><tr>
-      <th>Player</th>
-      <th>Pick</th>
-      <th>Edge Score</th>
-      <th>Agreement</th>
-      <th>Line</th>
-      <th>Model</th>
-      <th>Edge</th>
-      <th class="col-hide-mobile">Last 3</th>
-      <th class="col-hide-mobile">Season</th>
-    </tr></thead>
-    <tbody>${pickRows}${passDiv}</tbody>
-  </table></div>`;
+  const pickCards = picks.map(r => renderCard(r, false)).join('');
+  const passCards = passes.length > 0
+    ? `<div class="mobile-card" style="padding:8px 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-size: 10px;">No pick — other players</div>` +
+      passes.map(r => renderCard(r, true)).join('')
+    : '';
+
+  return `
+    <div class="tbl-wrap desktop-table"><table>
+      <thead><tr>
+        <th>Player</th>
+        <th>Pick</th>
+        <th>Edge Score</th>
+        <th>Agreement</th>
+        <th>Line</th>
+        <th>Model</th>
+        <th>Edge</th>
+        <th class="col-hide-mobile">Last 3</th>
+        <th class="col-hide-mobile">Season</th>
+      </tr></thead>
+      <tbody>${pickRows}${passDiv}</tbody>
+    </table></div>
+    <div class="mobile-cards">${pickCards}${passCards}</div>`;
 }
 
 // ── SEASON LOG ────────────────────────────────────────────────────────────────
