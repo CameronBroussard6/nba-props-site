@@ -39,32 +39,67 @@ header {
   border-bottom: 1px solid var(--border);
   background: var(--surface);
 }
-.brand { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
-.site-title { font-size: 22px; font-weight: 600; color: var(--text); letter-spacing: -0.3px; line-height: 1.1; }
-.site-sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
-.site-date { font-size: 12px; font-style: italic; color: var(--muted); margin-top: 3px; }
-#updated { font-family: var(--mono); font-size: 10px; color: var(--border); margin-top: 6px; }
+.brand {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+.site-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.3px;
+  line-height: 1.1;
+}
+.site-date {
+  font-size: 12px;
+  font-style: italic;
+  color: #ffffff;
+  margin-top: 3px;
+}
+#updated {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: #ffffff;
+  margin-top: 6px;
+}
 
 /* RECORDS */
 .records {
-  display: flex;
-  overflow-x: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-bottom: 1px solid var(--border);
   background: var(--surface);
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
 }
-.records::-webkit-scrollbar { display: none; }
 .rec {
   padding: 12px 20px;
   border-right: 1px solid var(--border);
-  min-width: 110px;
-  flex-shrink: 0;
 }
 .rec:last-child { border-right: none; }
-.rec-label { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
-.rec-val { font-family: var(--mono); font-size: 20px; font-weight: 500; color: var(--text); line-height: 1; }
-.rec-sub { font-family: var(--mono); font-size: 10px; color: var(--muted); margin-top: 3px; }
+.rec-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+.rec-val {
+  font-family: var(--mono);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1;
+}
+.rec-sub {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 3px;
+}
 .pos { color: var(--accent); }
 .neg { color: var(--danger); }
 
@@ -140,10 +175,15 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
 
 /* PICK BADGE */
 .badge {
-  display: inline-flex; align-items: center; gap: 4px;
-  padding: 2px 8px; border-radius: 3px;
-  font-size: 10px; font-weight: 600;
-  letter-spacing: 0.05em; font-family: var(--mono);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  font-family: var(--mono);
 }
 .b-str-over  { background: #052e16; color: var(--accent); border: 1px solid var(--accent-d); }
 .b-str-under { background: var(--blue-d); color: #93c5fd; border: 1px solid #1d4ed8; }
@@ -157,10 +197,10 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
   font-size: 13px;
   font-weight: 500;
 }
-.es-elite{ color: #a78bfa; font-weight: 600; }   /* purple — rare elite picks */
-.es-high { color: var(--accent); }             /* green  — strong 7-12 */
-.es-mid  { color: var(--warn); }               /* amber  — medium 4-7  */
-.es-low  { color: var(--muted); }              /* gray   — low <4      */
+.es-elite { color: #a78bfa; font-weight: 700; }
+.es-high  { color: var(--accent); }
+.es-mid   { color: var(--warn); }
+.es-low   { color: var(--muted); }
 
 /* ROLE FLAG */
 .rflag {
@@ -175,7 +215,13 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
 .rf-norm { color: var(--muted); }
 
 /* AGREEMENT DOT */
-.adot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 5px; }
+.adot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
 .a-HIGH { background: var(--accent); }
 .a-MED  { background: var(--warn); }
 .a-LOW  { background: var(--muted); }
@@ -187,21 +233,16 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
 
 /* PLAYER CELL */
 .pname { font-weight: 500; font-size: 13px; }
-.pgame { font-size: 10px; color: var(--muted); font-family: var(--mono); margin-top: 1px; }
+.pgame {
+  font-size: 10px;
+  color: var(--muted);
+  font-family: var(--mono);
+  margin-top: 1px;
+}
 
 /* MONO VALUE */
 .mv { font-family: var(--mono); font-size: 12px; color: var(--muted); }
 .mv-bright { font-family: var(--mono); font-size: 13px; color: var(--text); }
-
-/* SECTION DIVIDER */
-.sec-div td {
-  padding: 6px 12px;
-  font-size: 9px; font-weight: 600;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--muted);
-  background: var(--surface2);
-  border-bottom: 1px solid var(--border);
-}
 
 /* EMPTY STATE */
 .empty {
@@ -216,7 +257,7 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
 .result-loss { color: var(--danger); font-weight: 600; }
 .result-push { color: var(--muted); font-weight: 600; }
 
-/* RESPONSIVE TABLE / CARDS */
+/* MOBILE CARDS */
 .mobile-cards { display: none; }
 .mobile-card {
   background: var(--surface);
@@ -256,7 +297,7 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
   color: var(--text);
 }
 
-/* MOBILE OVERRIDES */
+/* MOBILE */
 @media (max-width: 600px) {
   header { padding: 14px 14px 12px; }
   main { padding: 10px; }
@@ -265,15 +306,12 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
   .site-date { font-size: 12px; }
 
   .records {
-    display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    overflow: visible;
   }
   .rec {
     min-width: 0;
     padding: 10px 10px;
     border-right: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
   }
   .rec:nth-child(3n) { border-right: none; }
   .rec-val { font-size: 15px; }
@@ -300,11 +338,6 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
 
 <div class="records">
   <div class="rec">
-    <div class="rec-label">Season</div>
-    <div class="rec-val" id="r-overall">—</div>
-    <div class="rec-sub" id="r-overall-pct">—</div>
-  </div>
-  <div class="rec">
     <div class="rec-label">Threes</div>
     <div class="rec-val" id="r-fg3m">—</div>
     <div class="rec-sub" id="r-fg3m-pct">—</div>
@@ -318,11 +351,6 @@ td { padding: 10px 12px; vertical-align: middle; white-space: nowrap; }
     <div class="rec-label">Assists</div>
     <div class="rec-val" id="r-ast">—</div>
     <div class="rec-sub" id="r-ast-pct">—</div>
-  </div>
-  <div class="rec">
-    <div class="rec-label">Strong</div>
-    <div class="rec-val" id="r-strong">—</div>
-    <div class="rec-sub" id="r-strong-pct">—</div>
   </div>
 </div>
 
@@ -347,18 +375,11 @@ const BASE = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/ma
 const TARGETS = ['fg3m','reb','ast'];
 const LABELS  = {fg3m:'Threes', reb:'Rebounds', ast:'Assists'};
 
-// ── HELPERS ──────────────────────────────────────────────────────────────────
 function today() { return new Date().toISOString().slice(0,10); }
 
-function fmtDateLong(str) {
-  if (!str) return '—';
-  const d = new Date(str + 'T12:00:00');
-  return d.toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric', year:'numeric'});
-}
-
 function ordinal(n) {
-  const s = ['th','st','nd','rd'], v = n%100;
-  return n + (s[(v-20)%10]||s[v]||s[0]);
+  const s = ['th','st','nd','rd'], v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
 
 function fmtDateOrdinal(str) {
@@ -374,7 +395,9 @@ async function fetchCSV(url) {
     const r = await fetch(url + '?t=' + Date.now());
     if (!r.ok) return null;
     return parseCSV(await r.text());
-  } catch(e) { return null; }
+  } catch (e) {
+    return null;
+  }
 }
 
 function parseCSV(text) {
@@ -382,7 +405,8 @@ function parseCSV(text) {
   if (lines.length < 2) return [];
   const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g,''));
   return lines.slice(1).map(line => {
-    const vals = []; let cur = '', inQ = false;
+    const vals = [];
+    let cur = '', inQ = false;
     for (let i = 0; i < line.length; i++) {
       if (line[i] === '"') { inQ = !inQ; continue; }
       if (line[i] === ',' && !inQ) { vals.push(cur); cur = ''; continue; }
@@ -390,61 +414,69 @@ function parseCSV(text) {
     }
     vals.push(cur);
     const obj = {};
-    headers.forEach((h,i) => obj[h] = (vals[i]||'').trim());
+    headers.forEach((h, i) => obj[h] = (vals[i] || '').trim());
     return obj;
   });
 }
 
-function fmt(v, d=1) { const n = parseFloat(v); return isNaN(n) ? '—' : n.toFixed(d); }
-function fmtRec(w,l) { return (w+l===0) ? '—' : `${w}-${l}`; }
-function pct(w,l)    { return (w+l===0) ? '—' : `${Math.round(w/(w+l)*100)}%`; }
+function fmt(v, d = 1) {
+  const n = parseFloat(v);
+  return isNaN(n) ? '—' : n.toFixed(d);
+}
+function fmtRec(w, l) { return (w + l === 0) ? '—' : `${w}-${l}`; }
+function pct(w, l) { return (w + l === 0) ? '—' : `${Math.round(w / (w + l) * 100)}%`; }
 
-// ── RECORDS ───────────────────────────────────────────────────────────────────
-function computeRec(rows, opts={}) {
-  let w=0, l=0;
+function computeRec(rows, opts = {}) {
+  let w = 0, l = 0;
   rows.forEach(r => {
     if (opts.target && r.target !== opts.target) return;
-    if (opts.strong && !r.pick.includes('STRONG')) return;
-    if (r.result === 'WIN')  w++;
+    if (r.result === 'WIN') w++;
     if (r.result === 'LOSS') l++;
   });
-  return {w, l};
+  return { w, l };
 }
 
 function renderRecords(tracking) {
   if (!tracking || !tracking.length) return;
-  const ov = computeRec(tracking);
-  document.getElementById('r-overall').textContent = fmtRec(ov.w, ov.l);
-  document.getElementById('r-overall-pct').textContent = pct(ov.w, ov.l);
   TARGETS.forEach(t => {
-    const r = computeRec(tracking, {target:t});
+    const r = computeRec(tracking, { target: t });
     document.getElementById(`r-${t}`).textContent = fmtRec(r.w, r.l);
     document.getElementById(`r-${t}-pct`).textContent = pct(r.w, r.l);
   });
-  const str = computeRec(tracking, {strong:true});
-  document.getElementById('r-strong').textContent = fmtRec(str.w, str.l);
-  document.getElementById('r-strong-pct').textContent = pct(str.w, str.l);
 }
 
-// ── BADGE ─────────────────────────────────────────────────────────────────────
 function badgeClass(pick) {
-  if (!pick || pick==='PASS') return 'b-pass';
-  if (pick.includes('STRONG') && pick.includes('OVER'))  return 'b-str-over';
+  if (!pick || pick === 'PASS') return 'b-pass';
+  if (pick.includes('STRONG') && pick.includes('OVER')) return 'b-str-over';
   if (pick.includes('STRONG') && pick.includes('UNDER')) return 'b-str-under';
-  if (pick.includes('OVER'))  return 'b-over';
+  if (pick.includes('OVER')) return 'b-over';
   if (pick.includes('UNDER')) return 'b-under';
   return 'b-pass';
 }
 
-function arrow(dir) { return dir==='OVER' ? '↑' : dir==='UNDER' ? '↓' : ''; }
+function arrow(dir) {
+  if (dir === 'OVER') return '↑';
+  if (dir === 'UNDER') return '↓';
+  return '';
+}
 
 function esClass(score) {
   const n = parseFloat(score);
   if (isNaN(n)) return 'es-low';
   if (n >= 12) return 'es-elite';
-  if (n >= 7)  return 'es-high';
-  if (n >= 4)  return 'es-mid';
+  if (n >= 7) return 'es-high';
+  if (n >= 4) return 'es-mid';
   return 'es-low';
+}
+
+function edgeScoreStyle(score) {
+  const n = parseFloat(score);
+  if (isNaN(n)) return '';
+  const clamped = Math.max(0, Math.min(14, n));
+  const hue = 220 + ((clamped / 14) * 60);
+  const light = 72 - ((clamped / 14) * 10);
+  const weight = clamped >= 10 ? 700 : clamped >= 6 ? 600 : 500;
+  return `color:hsl(${hue}, 85%, ${light}%); font-weight:${weight};`;
 }
 
 function roleFlagHtml(flag) {
@@ -454,70 +486,61 @@ function roleFlagHtml(flag) {
   return ` <span class="rflag ${cls}">${lbl}</span>`;
 }
 
-// ── EDGE TABLE ────────────────────────────────────────────────────────────────
 function buildTable(rows, target) {
-  const picks  = rows.filter(r => r.pick && r.pick !== 'PASS')
-                     .sort((a,b) => parseFloat(b.edge_score||0) - parseFloat(a.edge_score||0));
+  const picks = rows
+    .filter(r => r.pick && r.pick !== 'PASS')
+    .sort((a, b) => parseFloat(b.edge_score || 0) - parseFloat(a.edge_score || 0));
   const passes = rows.filter(r => !r.pick || r.pick === 'PASS');
 
   if (rows.length === 0) {
     return `<div class="empty"><div class="icon">🏀</div><p>No ${LABELS[target]} data for today.</p></div>`;
   }
 
-  const renderRow = (r, isPass) => {
+  const renderRow = (r) => {
     const edge = parseFloat(r.edge);
-    const es   = parseFloat(r.edge_score);
-    const op   = isPass ? 'opacity:0.45;' : '';
-    return `<tr style="${op}">
+    const es = parseFloat(r.edge_score);
+    return `<tr>
       <td>
-        <div class="pname">${r.player_name||'—'}${roleFlagHtml(r.role_flag)}</div>
-        <div class="pgame">${(r.game||'').replace(' @ ',' · ')}</div>
+        <div class="pname">${r.player_name || '—'}${roleFlagHtml(r.role_flag)}</div>
+        <div class="pgame">${(r.game || '').replace(' @ ',' · ')}</div>
       </td>
-      <td><span class="badge ${badgeClass(r.pick)}">${arrow(r.direction)} ${(r.direction||r.pick||'PASS')}</span></td>
-      <td><span class="es ${esClass(r.edge_score)}">${isNaN(es)?'—':es.toFixed(1)}</span></td>
-      <td><span class="adot a-${r.agreement||'LOW'}"></span><span class="mv">${r.agreement||'—'}</span></td>
+      <td><span class="badge ${badgeClass(r.pick)}">${arrow(r.direction)} ${(r.direction || r.pick || 'PASS')}</span></td>
+      <td><span class="es ${esClass(r.edge_score)}" style="${edgeScoreStyle(r.edge_score)}">${isNaN(es) ? '—' : es.toFixed(1)}</span></td>
+      <td><span class="adot a-${r.agreement || 'LOW'}"></span><span class="mv">${r.agreement || '—'}</span></td>
       <td><span class="mv-bright">${fmt(r.line)}</span></td>
       <td><span class="mv-bright">${fmt(r.prediction)}</span></td>
-      <td><span class="ev ${edge>=0?'ep':'en'}">${edge>=0?'+':''}${fmt(edge,2)}</span></td>
+      <td><span class="ev ${edge >= 0 ? 'ep' : 'en'}">${edge >= 0 ? '+' : ''}${fmt(edge, 2)}</span></td>
       <td class="col-hide-mobile"><span class="mv">${fmt(r.m8_last3)}</span></td>
       <td class="col-hide-mobile"><span class="mv">${fmt(r.m4_mean)}</span></td>
     </tr>`;
   };
 
-  const renderCard = (r, isPass) => {
+  const renderCard = (r) => {
     const edge = parseFloat(r.edge);
-    const es   = parseFloat(r.edge_score);
-    const op   = isPass ? 'opacity:0.45;' : '';
-    return `<div class="mobile-card" style="${op}">
+    const es = parseFloat(r.edge_score);
+    return `<div class="mobile-card">
       <div class="mobile-card-head">
         <div>
-          <div class="pname">${r.player_name||'—'}${roleFlagHtml(r.role_flag)}</div>
-          <div class="pgame">${(r.game||'').replace(' @ ',' · ')}</div>
+          <div class="pname">${r.player_name || '—'}${roleFlagHtml(r.role_flag)}</div>
+          <div class="pgame">${(r.game || '').replace(' @ ',' · ')}</div>
         </div>
-        <div><span class="badge ${badgeClass(r.pick)}">${arrow(r.direction)} ${(r.direction||r.pick||'PASS')}</span></div>
+        <div><span class="badge ${badgeClass(r.pick)}">${arrow(r.direction)} ${(r.direction || r.pick || 'PASS')}</span></div>
       </div>
       <div class="mobile-meta">
-        <div class="mobile-stat"><div class="mobile-stat-label">Edge Score</div><div class="mobile-stat-value ${esClass(r.edge_score)}">${isNaN(es)?'—':es.toFixed(1)}</div></div>
-        <div class="mobile-stat"><div class="mobile-stat-label">Agreement</div><div class="mobile-stat-value">${r.agreement||'—'}</div></div>
+        <div class="mobile-stat"><div class="mobile-stat-label">Edge Score</div><div class="mobile-stat-value ${esClass(r.edge_score)}" style="${edgeScoreStyle(r.edge_score)}">${isNaN(es) ? '—' : es.toFixed(1)}</div></div>
+        <div class="mobile-stat"><div class="mobile-stat-label">Agreement</div><div class="mobile-stat-value">${r.agreement || '—'}</div></div>
         <div class="mobile-stat"><div class="mobile-stat-label">Line</div><div class="mobile-stat-value">${fmt(r.line)}</div></div>
         <div class="mobile-stat"><div class="mobile-stat-label">Model</div><div class="mobile-stat-value">${fmt(r.prediction)}</div></div>
-        <div class="mobile-stat"><div class="mobile-stat-label">Edge</div><div class="mobile-stat-value ${edge>=0?'ep':'en'}">${edge>=0?'+':''}${fmt(edge,2)}</div></div>
+        <div class="mobile-stat"><div class="mobile-stat-label">Edge</div><div class="mobile-stat-value ${edge >= 0 ? 'ep' : 'en'}">${edge >= 0 ? '+' : ''}${fmt(edge, 2)}</div></div>
         <div class="mobile-stat"><div class="mobile-stat-label">Last 3</div><div class="mobile-stat-value">${fmt(r.m8_last3)}</div></div>
       </div>
     </div>`;
   };
 
-  const pickRows  = picks.map(r => renderRow(r, false)).join('');
-  const passDiv   = passes.length > 0
-    ? `<tr class="sec-div"><td colspan="9">No pick — other players</td></tr>` +
-      passes.map(r => renderRow(r, true)).join('')
-    : '';
-
-  const pickCards = picks.map(r => renderCard(r, false)).join('');
-  const passCards = passes.length > 0
-    ? `<div class="mobile-card" style="padding:8px 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-size: 10px;">No pick — other players</div>` +
-      passes.map(r => renderCard(r, true)).join('')
-    : '';
+  const pickRows = picks.map(r => renderRow(r)).join('');
+  const passRows = passes.map(r => renderRow(r)).join('');
+  const pickCards = picks.map(r => renderCard(r)).join('');
+  const passCards = passes.map(r => renderCard(r)).join('');
 
   return `
     <div class="tbl-wrap desktop-table"><table>
@@ -532,21 +555,21 @@ function buildTable(rows, target) {
         <th class="col-hide-mobile">Last 3</th>
         <th class="col-hide-mobile">Season</th>
       </tr></thead>
-      <tbody>${pickRows}${passDiv}</tbody>
+      <tbody>${pickRows}${passRows}</tbody>
     </table></div>
     <div class="mobile-cards">${pickCards}${passCards}</div>`;
 }
 
-// ── SEASON LOG ────────────────────────────────────────────────────────────────
 function renderLog(tracking) {
   const panel = document.getElementById('panel-log');
   if (!tracking || !tracking.length) {
     panel.innerHTML = `<div class="empty"><div class="icon">📋</div><p>No resolved picks yet — check back after games finish.</p></div>`;
     return;
   }
+
   const resolved = tracking
     .filter(r => r.result && r.result !== '' && r.result !== 'NA')
-    .sort((a,b) => b.date.localeCompare(a.date));
+    .sort((a, b) => b.date.localeCompare(a.date));
 
   if (!resolved.length) {
     panel.innerHTML = `<div class="empty"><div class="icon">📋</div><p>Picks logged — results will populate after games resolve tonight.</p></div>`;
@@ -554,19 +577,19 @@ function renderLog(tracking) {
   }
 
   const rows = resolved.map(r => {
-    const cls = r.result==='WIN' ? 'result-win' : r.result==='LOSS' ? 'result-loss' : 'result-push';
+    const cls = r.result === 'WIN' ? 'result-win' : r.result === 'LOSS' ? 'result-loss' : 'result-push';
     const units = parseFloat(r.profit_units);
-    const es    = parseFloat(r.edge_score);
+    const es = parseFloat(r.edge_score);
     return `<tr>
       <td><span class="mv">${r.date}</span></td>
       <td class="pname">${r.player_name}</td>
-      <td><span class="mv">${LABELS[r.target]||r.target}</span></td>
+      <td><span class="mv">${LABELS[r.target] || r.target}</span></td>
       <td><span class="badge ${badgeClass(r.pick)}">${r.pick}</span></td>
       <td><span class="mv-bright">${fmt(r.line)}</span></td>
       <td><span class="mv-bright">${fmt(r.actual)}</span></td>
       <td><span class="${cls}">${r.result}</span></td>
-      <td><span class="es ${esClass(r.edge_score)}">${isNaN(es)?'—':es.toFixed(1)}</span></td>
-      <td><span class="ev ${!isNaN(units)&&units>=0?'ep':'en'}">${!isNaN(units)?(units>=0?'+':'')+units.toFixed(3):'—'}</span></td>
+      <td><span class="es ${esClass(r.edge_score)}" style="${edgeScoreStyle(r.edge_score)}">${isNaN(es) ? '—' : es.toFixed(1)}</span></td>
+      <td><span class="ev ${!isNaN(units) && units >= 0 ? 'ep' : 'en'}">${!isNaN(units) ? (units >= 0 ? '+' : '') + units.toFixed(3) : '—'}</span></td>
     </tr>`;
   }).join('');
 
@@ -579,7 +602,6 @@ function renderLog(tracking) {
   </table></div>`;
 }
 
-// ── INIT ─────────────────────────────────────────────────────────────────────
 async function init() {
   const dateStr = today();
   document.getElementById('run-date').textContent = fmtDateOrdinal(dateStr);
@@ -587,13 +609,13 @@ async function init() {
 
   for (const tgt of TARGETS) {
     const panel = document.getElementById(`panel-${tgt}`);
-    panel.innerHTML = `<div class="empty"><div class="icon" style="animation:spin 1s linear infinite">⟳</div></div>`;
+    panel.innerHTML = `<div class="empty"><div class="icon">⟳</div></div>`;
 
     let rows = await fetchCSV(`${BASE}/data/edge_sheet_${tgt}_${dateStr}.csv`);
     let usedDate = dateStr;
 
     if (!rows || !rows.length) {
-      const yd = new Date(Date.now()-86400000).toISOString().slice(0,10);
+      const yd = new Date(Date.now() - 86400000).toISOString().slice(0,10);
       rows = await fetchCSV(`${BASE}/data/edge_sheet_${tgt}_${yd}.csv`);
       usedDate = yd;
     }
@@ -616,7 +638,6 @@ async function init() {
   renderLog(tracking);
 }
 
-// ── TABS ─────────────────────────────────────────────────────────────────────
 document.querySelectorAll('.tab').forEach(t => {
   t.addEventListener('click', () => {
     document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
