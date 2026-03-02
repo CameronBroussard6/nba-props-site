@@ -9,25 +9,25 @@
 
 <style>
 :root {
-  --bg:       #0d0f12;
-  --surface:  #161920;
-  --surface2: #1e2229;
-  --border:   #2a2f38;
-  --text:     #e8eaf0;
-  --muted:    #9097a3;
-  --muted2:   #707784;
-  --accent:   #22c55e;
-  --accent-d: #166534;
-  --blue:     #3b82f6;
-  --blue-d:   #1e3a5f;
-  --warn:     #f59e0b;
-  --danger:   #ef4444;
-  --gold:     #d4af37;
-  --gold-soft:#e6c866;
-  --mono:     'IBM Plex Mono', monospace;
-  --sans:     'IBM Plex Sans', sans-serif;
-  --r:        8px;
+  --bg:        #0d0f12;
+  --surface:   #161920;
+  --surface2:  #1e2229;
+  --border:    #2a2f38;
+  --text:      #e8eaf0;
+  --muted:     #9097a3;
+  --muted2:    #707784;
+  --accent:    #22c55e;
+  --accent-d:  #166534;
+  --blue:      #3b82f6;
+  --blue-d:    #1e3a5f;
+  --warn:      #f59e0b;
+  --danger:    #ef4444;
+  --gold:      #d4af37;
+  --mono:      'IBM Plex Mono', monospace;
+  --sans:      'IBM Plex Sans', sans-serif;
+  --r:         8px;
 }
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -82,7 +82,7 @@ header {
 }
 
 #updated {
-  font-size: 12px;
+  font-size: 10px;
   font-style: normal;
   color: var(--muted);
   margin-top: 4px;
@@ -90,8 +90,8 @@ header {
 
 .header-logo {
   flex: 0 0 auto;
-  width: 74px;
-  height: 74px;
+  width: 130px;
+  height: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -241,6 +241,7 @@ tbody tr {
   border-bottom: 1px solid var(--border);
   transition: background 0.1s;
 }
+
 tbody tr:last-child { border-bottom: none; }
 tbody tr:hover { background: var(--surface2); }
 
@@ -262,11 +263,26 @@ td {
   letter-spacing: 0.05em;
   font-family: var(--mono);
 }
-.b-str-over  { background: #052e16; color: var(--accent); border: 1px solid var(--accent-d); }
-.b-str-under { background: var(--blue-d); color: #93c5fd; border: 1px solid #1d4ed8; }
-.b-over      { background: #14532d; color: #4ade80; }
-.b-under     { background: #1e3a5f; color: #93c5fd; }
-.b-pass      { background: var(--surface2); color: var(--muted); }
+
+.b-over,
+.b-str-over {
+  background: #14532d;
+  color: #4ade80;
+  border: 1px solid #166534;
+}
+
+.b-under,
+.b-str-under {
+  background: #1e3a5f;
+  color: #93c5fd;
+  border: 1px solid #1d4ed8;
+}
+
+.b-pass {
+  background: var(--surface2);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
 
 /* EDGE SCORE */
 .es {
@@ -376,13 +392,13 @@ td {
   }
 
   .header-logo {
-    width: 54px;
-    height: 54px;
+    width: 88px;
+    height: 88px;
   }
 
   .site-title { font-size: 18px; }
-  .site-date,
-  #updated { font-size: 12px; }
+  .site-date { font-size: 12px; }
+  #updated { font-size: 10px; }
 
   .records {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -598,19 +614,27 @@ function renderRecords(tracking) {
   });
 }
 
-function badgeClass(pick) {
-  if (!pick || pick === 'PASS') return 'b-pass';
-  if (pick.includes('STRONG') && pick.includes('OVER')) return 'b-str-over';
-  if (pick.includes('STRONG') && pick.includes('UNDER')) return 'b-str-under';
-  if (pick.includes('OVER')) return 'b-over';
-  if (pick.includes('UNDER')) return 'b-under';
+function normalizePick(r) {
+  const direct = (r.direction || '').toUpperCase();
+  const pick = (r.pick || '').toUpperCase();
+
+  if (direct === 'OVER' || pick.includes('OVER')) return 'OVER';
+  if (direct === 'UNDER' || pick.includes('UNDER')) return 'UNDER';
+  return 'PASS';
+}
+
+function badgeClass(r) {
+  const side = normalizePick(r);
+  if (side === 'OVER') return 'b-over';
+  if (side === 'UNDER') return 'b-under';
   return 'b-pass';
 }
 
-function arrow(dir) {
-  if (dir === 'OVER') return '↑';
-  if (dir === 'UNDER') return '↓';
-  return '';
+function badgeLabel(r) {
+  const side = normalizePick(r);
+  if (side === 'OVER') return '↑ OVER';
+  if (side === 'UNDER') return '↓ UNDER';
+  return 'PASS';
 }
 
 function esClass(score) {
@@ -640,11 +664,11 @@ function roleFlagHtml(flag) {
 }
 
 function buildTable(rows, target) {
-  const picks = rows
-    .filter(r => r.pick && r.pick !== 'PASS')
+  const pickedRows = rows
+    .filter(r => normalizePick(r) !== 'PASS')
     .sort((a, b) => parseFloat(b.edge_score || 0) - parseFloat(a.edge_score || 0));
 
-  const passes = rows.filter(r => !r.pick || r.pick === 'PASS');
+  const passRows = rows.filter(r => normalizePick(r) === 'PASS');
 
   if (rows.length === 0) {
     return `<div class="empty"><div class="icon">🏀</div><p>No ${LABELS[target]} data for today.</p></div>`;
@@ -659,7 +683,7 @@ function buildTable(rows, target) {
         <div class="pname">${r.player_name || '—'}${roleFlagHtml(r.role_flag)}</div>
         <div class="pgame">${(r.game || '').replace(' @ ', ' · ')}</div>
       </td>
-      <td><span class="badge ${badgeClass(r.pick)}">${arrow(r.direction)} ${(r.direction || r.pick || 'PASS')}</span></td>
+      <td><span class="badge ${badgeClass(r)}">${badgeLabel(r)}</span></td>
       <td><span class="es ${esClass(r.edge_score)}" style="${edgeScoreStyle(r.edge_score)}">${isNaN(es) ? '—' : es.toFixed(1)}</span></td>
       <td><span class="mv">${r.agreement || '—'}</span></td>
       <td><span class="mv-bright">${fmt(r.line)}</span></td>
@@ -680,7 +704,7 @@ function buildTable(rows, target) {
           <div class="pname">${r.player_name || '—'}${roleFlagHtml(r.role_flag)}</div>
           <div class="pgame">${(r.game || '').replace(' @ ', ' · ')}</div>
         </div>
-        <div><span class="badge ${badgeClass(r.pick)}">${arrow(r.direction)} ${(r.direction || r.pick || 'PASS')}</span></div>
+        <div><span class="badge ${badgeClass(r)}">${badgeLabel(r)}</span></div>
       </div>
       <div class="mobile-meta">
         <div class="mobile-stat"><div class="mobile-stat-label">Edge Score</div><div class="mobile-stat-value ${esClass(r.edge_score)}" style="${edgeScoreStyle(r.edge_score)}">${isNaN(es) ? '—' : es.toFixed(1)}</div></div>
@@ -693,10 +717,10 @@ function buildTable(rows, target) {
     </div>`;
   };
 
-  const pickRows = picks.map(r => renderRow(r)).join('');
-  const passRows = passes.map(r => renderRow(r)).join('');
-  const pickCards = picks.map(r => renderCard(r)).join('');
-  const passCards = passes.map(r => renderCard(r)).join('');
+  const pickedRowsHtml = pickedRows.map(r => renderRow(r)).join('');
+  const passRowsHtml = passRows.map(r => renderRow(r)).join('');
+  const pickedCardsHtml = pickedRows.map(r => renderCard(r)).join('');
+  const passCardsHtml = passRows.map(r => renderCard(r)).join('');
 
   return `
     <div class="tbl-wrap desktop-table">
@@ -714,10 +738,10 @@ function buildTable(rows, target) {
             <th class="col-hide-mobile">Season</th>
           </tr>
         </thead>
-        <tbody>${pickRows}${passRows}</tbody>
+        <tbody>${pickedRowsHtml}${passRowsHtml}</tbody>
       </table>
     </div>
-    <div class="mobile-cards">${pickCards}${passCards}</div>
+    <div class="mobile-cards">${pickedCardsHtml}${passCardsHtml}</div>
   `;
 }
 
@@ -745,8 +769,7 @@ async function init() {
     if (rows && rows.length) {
       sawAnyData = true;
       latestUsedDate = usedDate;
-
-      document.getElementById(`ct-${tgt}`).textContent = String(rows.length); // full count below
+      document.getElementById(`ct-${tgt}`).textContent = String(rows.length);
       panel.innerHTML = buildTable(rows, tgt);
     } else {
       document.getElementById(`ct-${tgt}`).textContent = '0';
