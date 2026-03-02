@@ -412,7 +412,7 @@ function buildTable(rows, target) {
         <div class="pname">${r.player_name||'—'}${roleFlagHtml(r.role_flag)}</div>
         <div class="pgame">${(r.game||'').replace(' @ ',' · ')}</div>
       </td>
-      <td><span class="badge ${badgeClass(r.pick)}">${arrow(r.direction)} ${r.pick||'PASS'}</span></td>
+      <td><span class="badge ${badgeClass(r.pick)}">${arrow(r.direction)} ${(r.direction||r.pick||'PASS')}</span></td>
       <td><span class="es ${esClass(r.edge_score)}">${isNaN(es)?'—':es.toFixed(1)}</span></td>
       <td><span class="adot a-${r.agreement||'LOW'}"></span><span class="mv">${r.agreement||'—'}</span></td>
       <td><span class="mv-bright">${fmt(r.line)}</span></td>
