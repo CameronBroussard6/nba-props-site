@@ -6,7 +6,6 @@
 <title>CTB Analytics — NBA Props</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <style>
 :root {
   --bg:        #0d0f12;
@@ -27,9 +26,7 @@
   --sans:      'IBM Plex Sans', sans-serif;
   --r:         8px;
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
 body {
   font-family: var(--sans);
   background: var(--bg);
@@ -37,25 +34,21 @@ body {
   min-height: 100vh;
   font-size: 14px;
 }
-
 header {
   padding: 18px 24px 14px;
   border-bottom: 1px solid var(--border);
   background: var(--surface);
 }
-
 .header-top {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
 }
-
 .header-copy {
   min-width: 0;
   flex: 1 1 auto;
 }
-
 .brand {
   font-size: 11px;
   font-weight: 700;
@@ -64,7 +57,6 @@ header {
   color: var(--gold);
   margin-bottom: 2px;
 }
-
 .site-title {
   font-size: 22px;
   font-weight: 600;
@@ -72,21 +64,18 @@ header {
   letter-spacing: -0.3px;
   line-height: 1.1;
 }
-
 .site-date {
   font-size: 12px;
   font-style: italic;
   color: #ffffff;
   margin-top: 4px;
 }
-
 #updated {
   font-size: 10px;
   font-style: normal;
   color: var(--muted);
   margin-top: 4px;
 }
-
 .header-logo {
   flex: 0 0 auto;
   width: 130px;
@@ -95,28 +84,23 @@ header {
   align-items: center;
   justify-content: center;
 }
-
 .header-logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: block;
 }
-
 .records {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   border-bottom: 1px solid var(--border);
   background: var(--surface);
 }
-
 .rec {
   padding: 12px 20px;
   border-right: 1px solid var(--border);
 }
-
 .rec:last-child { border-right: none; }
-
 .rec-label {
   font-size: 9px;
   font-weight: 600;
@@ -125,7 +109,6 @@ header {
   color: var(--muted2);
   margin-bottom: 5px;
 }
-
 .rec-val {
   font-family: var(--mono);
   font-size: 20px;
@@ -133,20 +116,17 @@ header {
   color: var(--text);
   line-height: 1;
 }
-
 .rec-sub {
   font-family: var(--mono);
   font-size: 10px;
   color: var(--muted2);
   margin-top: 3px;
 }
-
 .tabs-wrap {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
   padding: 12px 12px 10px;
 }
-
 .tabs {
   display: flex;
   justify-content: center;
@@ -154,7 +134,6 @@ header {
   gap: 10px;
   flex-wrap: wrap;
 }
-
 .tab {
   padding: 10px 14px;
   min-width: 112px;
@@ -170,19 +149,16 @@ header {
   user-select: none;
   text-align: center;
 }
-
 .tab:hover {
   color: var(--text);
   border-color: #3a404b;
 }
-
 .tab.active {
   color: #ffffff;
   border-color: #3fda7a;
   background: #19261f;
   box-shadow: inset 0 0 0 1px rgba(34,197,94,0.15);
 }
-
 .tab-ct {
   display: inline-block;
   min-width: 22px;
@@ -195,56 +171,13 @@ header {
   font-family: var(--mono);
   vertical-align: middle;
 }
-
 .tab.active .tab-ct {
   background: var(--accent);
   color: #09140d;
 }
-
 main { padding: 16px; }
 .panel { display: none; }
 .panel.active { display: block; }
-
-.tbl-wrap {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
-}
-
-thead th {
-  padding: 9px 12px;
-  text-align: left;
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  border-bottom: 1px solid var(--border);
-  background: var(--surface2);
-  white-space: nowrap;
-}
-
-tbody tr {
-  border-bottom: 1px solid var(--border);
-  transition: background 0.1s;
-}
-
-tbody tr:last-child { border-bottom: none; }
-tbody tr:hover { background: var(--surface2); }
-
-td {
-  padding: 10px 12px;
-  vertical-align: middle;
-  white-space: nowrap;
-}
 
 .badge {
   display: inline-flex;
@@ -257,21 +190,16 @@ td {
   letter-spacing: 0.05em;
   font-family: var(--mono);
 }
-
-.b-over,
-.b-str-over {
+.b-over, .b-str-over {
   background: #14532d;
   color: #4ade80;
   border: 1px solid #166534;
 }
-
-.b-under,
-.b-str-under {
+.b-under, .b-str-under {
   background: #1e3a5f;
   color: #93c5fd;
   border: 1px solid #1d4ed8;
 }
-
 .b-pass {
   background: var(--surface2);
   color: var(--muted);
@@ -281,27 +209,8 @@ td {
 .es {
   font-family: var(--mono);
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
 }
-.es-elite { color: #b691ff; font-weight: 700; }
-.es-high  { color: var(--accent); }
-.es-mid   { color: var(--warn); }
-.es-low   { color: var(--muted); }
-
-.rflag {
-  display: inline-block;
-  font-size: 10px;
-  padding: 1px 5px;
-  border-radius: 3px;
-  font-family: var(--mono);
-}
-.rf-up   { background: #451a03; color: #fb923c; }
-.rf-down { background: #1e1b4b; color: #a5b4fc; }
-
-.ev { font-family: var(--mono); font-size: 12px; font-weight: 500; }
-.ep { color: var(--accent); }
-.en { color: #f87171; }
-
 .pname { font-weight: 500; font-size: 13px; }
 .pgame {
   font-size: 10px;
@@ -311,9 +220,23 @@ td {
   white-space: normal;
   line-height: 1.25;
 }
-
-.mv { font-family: var(--mono); font-size: 12px; color: var(--muted); }
-.mv-bright { font-family: var(--mono); font-size: 13px; color: var(--text); }
+.mv {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+.mv-bright {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text);
+}
+.ev {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+}
+.ep { color: var(--accent); }
+.en { color: #f87171; }
 
 .empty {
   text-align: center;
@@ -331,10 +254,24 @@ td {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--r);
-  padding: 12px;
-  margin-bottom: 10px;
+  padding: 0;
+  margin-bottom: 12px;
+  overflow: hidden;
 }
-
+.card-stat-bar {
+  border-top: 1px solid #3a404b;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, #181c23 0%, #141820 100%);
+  padding: 5px 10px;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #d5d9e0;
+  font-weight: 700;
+}
+.mobile-card-inner {
+  padding: 12px;
+}
 .mobile-card-head {
   display: flex;
   align-items: flex-start;
@@ -342,28 +279,32 @@ td {
   gap: 10px;
   margin-bottom: 10px;
 }
-
 .mobile-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 150px;
+  grid-template-columns: minmax(0, 1fr) 164px;
   gap: 10px;
   align-items: stretch;
 }
-
 .mobile-left {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
   gap: 8px;
 }
-
 .mobile-stat {
   background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 8px 9px;
-  min-height: 58px;
 }
-
+.mobile-stat.top-box {
+  min-height: 74px;
+}
+.mobile-stat.mid-box {
+  min-height: 74px;
+}
+.mobile-stat.edge-box {
+  min-height: 54px;
+}
 .mobile-stat-label {
   font-size: 9px;
   color: var(--muted);
@@ -371,30 +312,26 @@ td {
   text-transform: uppercase;
   margin-bottom: 5px;
 }
-
 .mobile-stat-value {
   font-family: var(--mono);
   font-size: 12px;
   color: var(--text);
 }
-
 .mobile-stat-sub {
   margin-top: 4px;
   font-size: 10px;
   color: var(--muted);
   font-family: var(--mono);
 }
-
 .mobile-chart-box {
   background: var(--surface2);
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 8px;
-  min-height: 190px;
+  min-height: 210px;
   display: flex;
   flex-direction: column;
 }
-
 .mobile-chart-title {
   font-size: 9px;
   color: var(--muted);
@@ -402,7 +339,6 @@ td {
   text-transform: uppercase;
   margin-bottom: 6px;
 }
-
 .last7-svg {
   width: 100%;
   height: 100%;
@@ -410,61 +346,31 @@ td {
   flex: 1 1 auto;
 }
 
-.desktop-table .game-cell {
-  max-width: 260px;
-  white-space: normal;
-  line-height: 1.25;
-}
-
 @media (max-width: 600px) {
   header { padding: 14px 14px 12px; }
   main { padding: 10px; }
-
-  .header-top {
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .header-logo {
-    width: 88px;
-    height: 88px;
-  }
-
+  .header-top { align-items: flex-start; gap: 10px; }
+  .header-logo { width: 88px; height: 88px; }
   .site-title { font-size: 18px; }
   .site-date { font-size: 12px; }
   #updated { font-size: 10px; }
-
-  .records {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
+  .records { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .rec {
     min-width: 0;
     padding: 10px 10px;
     border-right: 1px solid var(--border);
   }
-
   .rec:nth-child(3n) { border-right: none; }
-
   .rec-val { font-size: 15px; }
   .rec-sub { font-size: 9px; }
-
-  .tabs-wrap {
-    padding: 10px 8px 8px;
-  }
-
-  .tabs {
-    gap: 8px;
-  }
-
+  .tabs-wrap { padding: 10px 8px 8px; }
+  .tabs { gap: 8px; }
   .tab {
     min-width: 96px;
     padding: 9px 10px;
     font-size: 12px;
     border-radius: 10px;
   }
-
-  .desktop-table { display: none; }
   .mobile-cards { display: block; }
 }
 </style>
@@ -479,7 +385,6 @@ td {
       <div class="site-date" id="run-date">—</div>
       <div id="updated">Last Run: —</div>
     </div>
-
     <div class="header-logo">
       <img src="assets/ctb-logo.png" alt="CTB Analytics Logo">
     </div>
@@ -528,13 +433,11 @@ const LABELS = { fg3m: 'Threes', reb: 'Rebounds', ast: 'Assists' };
 function today() {
   return new Date().toISOString().slice(0, 10);
 }
-
 function ordinal(n) {
   const s = ['th', 'st', 'nd', 'rd'];
   const v = n % 100;
   return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
-
 function fmtDateOrdinal(str) {
   if (!str) return '—';
   const d = new Date(str + 'T12:00:00');
@@ -542,13 +445,10 @@ function fmtDateOrdinal(str) {
   const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   return `${days[d.getDay()]}, ${months[d.getMonth()]} ${ordinal(d.getDate())} ${d.getFullYear()}`;
 }
-
 function fmtLastRunCentral(dateInput) {
   if (!dateInput) return 'Last Run: —';
-
   const d = new Date(dateInput);
   if (isNaN(d.getTime())) return 'Last Run: —';
-
   const parts = new Intl.DateTimeFormat('en-US', {
     timeZone: 'America/Chicago',
     year: 'numeric',
@@ -558,7 +458,6 @@ function fmtLastRunCentral(dateInput) {
     minute: '2-digit',
     hour12: true
   }).formatToParts(d);
-
   const get = type => parts.find(p => p.type === type)?.value || '';
   const month = get('month');
   const day = Number(get('day'));
@@ -566,10 +465,8 @@ function fmtLastRunCentral(dateInput) {
   const hour = get('hour');
   const minute = get('minute');
   const dayPeriod = (get('dayPeriod') || '').toLowerCase();
-
   return `Last Run: ${month} ${ordinal(day)} ${year} ${hour}:${minute} ${dayPeriod} Central`;
 }
-
 async function fetchCSV(url) {
   try {
     const r = await fetch(url + '?t=' + Date.now());
@@ -579,20 +476,15 @@ async function fetchCSV(url) {
     return null;
   }
 }
-
 function parseCSV(text) {
   const trimmed = text.trim();
   if (!trimmed) return [];
-
   const lines = trimmed.split('\n');
   if (lines.length < 2) return [];
-
   const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
-
   return lines.slice(1).map(line => {
     const vals = [];
     let cur = '', inQ = false;
-
     for (let i = 0; i < line.length; i++) {
       if (line[i] === '"') {
         inQ = !inQ;
@@ -606,26 +498,21 @@ function parseCSV(text) {
       cur += line[i];
     }
     vals.push(cur);
-
     const obj = {};
     headers.forEach((h, i) => obj[h] = (vals[i] || '').trim());
     return obj;
   });
 }
-
 function fmt(v, d = 1) {
   const n = parseFloat(v);
-  return isNaN(n) ? '—' : n.toFixed(d);
+  return Number.isNaN(n) ? '—' : n.toFixed(d);
 }
-
 function fmtRec(w, l) {
   return (w + l === 0) ? '—' : `${w}-${l}`;
 }
-
 function pct(w, l) {
   return (w + l === 0) ? '—' : `${Math.round(w / (w + l) * 100)}%`;
 }
-
 function computeRec(rows, opts = {}) {
   let w = 0, l = 0;
   rows.forEach(r => {
@@ -635,100 +522,84 @@ function computeRec(rows, opts = {}) {
   });
   return { w, l };
 }
-
 function renderRecords(tracking) {
   if (!tracking || !tracking.length) return;
-
   TARGETS.forEach(t => {
     const r = computeRec(tracking, { target: t });
     document.getElementById(`r-${t}`).textContent = fmtRec(r.w, r.l);
     document.getElementById(`r-${t}-pct`).textContent = pct(r.w, r.l);
   });
 }
-
 function normalizePick(r) {
   const direct = (r.direction || '').toUpperCase();
   const pick = (r.pick || '').toUpperCase();
-
   if (direct === 'OVER' || pick.includes('OVER')) return 'OVER';
   if (direct === 'UNDER' || pick.includes('UNDER')) return 'UNDER';
   return 'PASS';
 }
-
 function badgeClass(r) {
   const side = normalizePick(r);
   if (side === 'OVER') return 'b-over';
   if (side === 'UNDER') return 'b-under';
   return 'b-pass';
 }
-
 function badgeLabel(r) {
   const side = normalizePick(r);
   if (side === 'OVER') return '↑ OVER';
   if (side === 'UNDER') return '↓ UNDER';
   return 'PASS';
 }
-
-function esClass(score) {
-  const n = parseFloat(score);
-  if (isNaN(n)) return 'es-low';
-  if (n >= 12) return 'es-elite';
-  if (n >= 7) return 'es-high';
-  if (n >= 4) return 'es-mid';
-  return 'es-low';
-}
-
 function edgeScoreStyle(score) {
   const n = parseFloat(score);
-  if (isNaN(n)) return '';
+  if (Number.isNaN(n)) return 'color:#9097a3;font-weight:600;';
   const clamped = Math.max(0, Math.min(14, n));
   const hue = 220 + ((clamped / 14) * 60);
   const light = 72 - ((clamped / 14) * 10);
   const weight = clamped >= 10 ? 700 : clamped >= 6 ? 600 : 500;
   return `color:hsl(${hue}, 85%, ${light}%); font-weight:${weight};`;
 }
-
+function agScoreStyle(score) {
+  const n = parseFloat(score);
+  if (Number.isNaN(n)) return 'color:#9097a3;font-weight:600;';
+  const clamped = Math.max(0, Math.min(1, n));
+  const hue = 0 + (clamped * 120);
+  return `color:hsl(${hue}, 80%, 60%); font-weight:700;`;
+}
 function roleFlagHtml(flag) {
   if (!flag || flag === 'NORMAL') return '';
   const cls = flag === 'ROLE_UP' ? 'rf-up' : 'rf-down';
   const lbl = flag === 'ROLE_UP' ? '▲ ROLE UP' : '▼ ROLE DN';
   return ` <span class="rflag ${cls}">${lbl}</span>`;
 }
-
 function parseLast7(valsStr) {
   if (!valsStr) return [];
-  return valsStr
-    .split('|')
-    .map(v => parseFloat(v))
-    .filter(v => !Number.isNaN(v));
+  return valsStr.split('|').map(v => parseFloat(v)).filter(v => !Number.isNaN(v));
 }
-
 function renderLast7Chart(valsStr, line) {
   const vals = parseLast7(valsStr);
   const lineVal = parseFloat(line);
-
   if (!vals.length || Number.isNaN(lineVal)) {
-    return `<div class="mv" style="padding-top:20px;">No recent data</div>`;
+    return `<div class="mv" style="padding-top:26px;">No recent data</div>`;
   }
 
-  const W = 140;
-  const H = 150;
-  const padL = 8;
-  const padR = 6;
+  const W = 168;
+  const H = 168;
+  const padL = 4;
+  const padR = 4;
   const padT = 8;
   const padB = 16;
   const chartW = W - padL - padR;
   const chartH = H - padT - padB;
 
   const maxVal = Math.max(...vals, lineVal, 1);
-  const topMax = maxVal * 1.15;
-
-  const yScale = v => padT + chartH - (v / topMax) * chartH;
+  const minVal = Math.min(...vals, lineVal, 0);
+  const span = Math.max(1, maxVal - minVal);
+  const yScale = v => padT + chartH - ((v - minVal) / span) * chartH;
   const lineY = yScale(lineVal);
 
   const n = vals.length;
-  const gap = 4;
-  const barW = Math.max(8, Math.floor((chartW - gap * (n - 1)) / n));
+  const gap = 3;
+  const barW = Math.max(10, Math.floor((chartW - gap * (n - 1)) / n));
 
   let bars = '';
   vals.forEach((v, i) => {
@@ -739,124 +610,71 @@ function renderLast7Chart(valsStr, line) {
     bars += `<rect x="${x}" y="${y}" width="${barW}" height="${h}" rx="2" fill="${fill}" />`;
   });
 
-  let xLabels = '';
-  vals.forEach((_, i) => {
-    const x = padL + i * (barW + gap) + barW / 2;
-    xLabels += `<text x="${x}" y="${H - 4}" text-anchor="middle" font-size="8" fill="#707784" font-family="IBM Plex Mono">G${i + 1}</text>`;
-  });
-
   return `
     <svg viewBox="0 0 ${W} ${H}" class="last7-svg" preserveAspectRatio="none">
       <line x1="${padL}" y1="${lineY}" x2="${W - padR}" y2="${lineY}"
             stroke="#facc15" stroke-width="2" stroke-dasharray="5 3" />
       ${bars}
-      ${xLabels}
     </svg>
   `;
 }
-
 function buildTable(rows, target) {
-  const pickedRows = rows
-    .filter(r => normalizePick(r) !== 'PASS')
+  const ordered = rows
+    .slice()
     .sort((a, b) => parseFloat(b.edge_score || 0) - parseFloat(a.edge_score || 0));
-
-  const passRows = rows.filter(r => normalizePick(r) === 'PASS');
 
   if (rows.length === 0) {
     return `<div class="empty"><div class="icon">🏀</div><p>No ${LABELS[target]} data for today.</p></div>`;
   }
 
-  const renderRow = (r) => {
-    const edge = parseFloat(r.edge);
-    const es = parseFloat(r.edge_score);
-
-    return `<tr>
-      <td>
-        <div class="pname">${r.player_name || '—'}${roleFlagHtml(r.role_flag)}</div>
-        <div class="pgame game-cell">${r.game || '—'}</div>
-      </td>
-      <td><span class="badge ${badgeClass(r)}">${badgeLabel(r)}</span></td>
-      <td>
-        <div><span class="es ${esClass(r.edge_score)}" style="${edgeScoreStyle(r.edge_score)}">${isNaN(es) ? '—' : es.toFixed(1)}</span></div>
-        <div class="mv">${r.agreement || '—'}</div>
-      </td>
-      <td>
-        <div class="mv-bright">${fmt(r.line)}</div>
-        <div class="mv">Model ${fmt(r.prediction)}</div>
-      </td>
-      <td><span class="ev ${edge >= 0 ? 'ep' : 'en'}">${edge >= 0 ? '+' : ''}${fmt(edge, 2)}</span></td>
-    </tr>`;
-  };
-
   const renderCard = (r) => {
     const edge = parseFloat(r.edge);
-    const es = parseFloat(r.edge_score);
+    const statLabel = LABELS[target].toUpperCase();
 
     return `<div class="mobile-card">
-      <div class="mobile-card-head">
-        <div>
-          <div class="pname">${r.player_name || '—'}${roleFlagHtml(r.role_flag)}</div>
-          <div class="pgame">${r.game || '—'}</div>
-        </div>
-        <div><span class="badge ${badgeClass(r)}">${badgeLabel(r)}</span></div>
-      </div>
-
-      <div class="mobile-body">
-        <div class="mobile-left">
-          <div class="mobile-stat">
-            <div class="mobile-stat-label">Edge Score</div>
-            <div class="mobile-stat-value ${esClass(r.edge_score)}" style="${edgeScoreStyle(r.edge_score)}">
-              ${isNaN(es) ? '—' : es.toFixed(1)}
-            </div>
-            <div class="mobile-stat-sub">${r.agreement || '—'}</div>
+      <div class="card-stat-bar">${statLabel}</div>
+      <div class="mobile-card-inner">
+        <div class="mobile-card-head">
+          <div>
+            <div class="pname">${r.player_name || '—'}${roleFlagHtml(r.role_flag)}</div>
+            <div class="pgame">${r.game || '—'}</div>
           </div>
-
-          <div class="mobile-stat">
-            <div class="mobile-stat-label">Line</div>
-            <div class="mobile-stat-value">${fmt(r.line)}</div>
-            <div class="mobile-stat-sub">Model ${fmt(r.prediction)}</div>
-          </div>
-
-          <div class="mobile-stat">
-            <div class="mobile-stat-label">Edge</div>
-            <div class="mobile-stat-value ${edge >= 0 ? 'ep' : 'en'}">
-              ${edge >= 0 ? '+' : ''}${fmt(edge, 2)}
-            </div>
-          </div>
+          <div><span class="badge ${badgeClass(r)}">${badgeLabel(r)}</span></div>
         </div>
 
-        <div class="mobile-chart-box">
-          <div class="mobile-chart-title">Last 7</div>
-          ${renderLast7Chart(r.last7_vals, r.line)}
+        <div class="mobile-body">
+          <div class="mobile-left">
+            <div class="mobile-stat top-box">
+              <div class="mobile-stat-label">Edge Score</div>
+              <div class="mobile-stat-value es" style="${edgeScoreStyle(r.edge_score)}">${fmt(r.edge_score, 1)}</div>
+              <div class="mobile-stat-label" style="margin-top:7px;">AG Score</div>
+              <div class="mobile-stat-value es" style="${agScoreStyle(r.ag_score)}">${fmt(r.ag_score, 2)}</div>
+            </div>
+
+            <div class="mobile-stat mid-box">
+              <div class="mobile-stat-label">Market Line</div>
+              <div class="mobile-stat-value">${fmt(r.line, 1)}</div>
+              <div class="mobile-stat-label" style="margin-top:7px;">Model Prediction</div>
+              <div class="mobile-stat-value">${fmt(r.prediction, 1)}</div>
+            </div>
+
+            <div class="mobile-stat edge-box">
+              <div class="mobile-stat-label">Edge</div>
+              <div class="mobile-stat-value ${edge >= 0 ? 'ep' : 'en'}">${edge >= 0 ? '+' : ''}${fmt(edge, 2)}</div>
+            </div>
+          </div>
+
+          <div class="mobile-chart-box">
+            <div class="mobile-chart-title">Last 7</div>
+            ${renderLast7Chart(r.last7_vals, r.line)}
+          </div>
         </div>
       </div>
     </div>`;
   };
 
-  const pickedRowsHtml = pickedRows.map(r => renderRow(r)).join('');
-  const passRowsHtml = passRows.map(r => renderRow(r)).join('');
-  const pickedCardsHtml = pickedRows.map(r => renderCard(r)).join('');
-  const passCardsHtml = passRows.map(r => renderCard(r)).join('');
-
-  return `
-    <div class="tbl-wrap desktop-table">
-      <table>
-        <thead>
-          <tr>
-            <th>Player</th>
-            <th>Pick</th>
-            <th>Edge Score</th>
-            <th>Line</th>
-            <th>Edge</th>
-          </tr>
-        </thead>
-        <tbody>${pickedRowsHtml}${passRowsHtml}</tbody>
-      </table>
-    </div>
-    <div class="mobile-cards">${pickedCardsHtml}${passCardsHtml}</div>
-  `;
+  return `<div class="mobile-cards">${ordered.map(renderCard).join('')}</div>`;
 }
-
 async function init() {
   const dateStr = today();
   document.getElementById('run-date').textContent = fmtDateOrdinal(dateStr);
@@ -895,7 +713,6 @@ async function init() {
   const lastRunDate = sawAnyData ? new Date() : new Date(latestUsedDate + 'T12:00:00');
   document.getElementById('updated').textContent = fmtLastRunCentral(lastRunDate);
 }
-
 document.querySelectorAll('.tab').forEach(t => {
   t.addEventListener('click', () => {
     document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
@@ -904,7 +721,6 @@ document.querySelectorAll('.tab').forEach(t => {
     document.getElementById(`panel-${t.dataset.tab}`).classList.add('active');
   });
 });
-
 init();
 </script>
 </body>
