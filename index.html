@@ -616,11 +616,11 @@ function renderLast7Chart(valsStr, line) {
   }
 
   const W = 202;
-  const H = 168;
-  const padL = 1;
-  const padR = 1;
-  const padT = 8;
-  const padB = 14;
+  const H = 185;      // taller to fit value labels above bars + axis labels below
+  const padL = 4;
+  const padR = 4;
+  const padT = 18;    // room for value labels above bars
+  const padB = 22;    // room for "Oldest" / "Latest" axis labels
   const chartW = W - padL - padR;
   const chartH = H - padT - padB;
 
@@ -634,20 +634,50 @@ function renderLast7Chart(valsStr, line) {
   const gap = 3;
   const barW = Math.max(11, Math.floor((chartW - gap * (n - 1)) / n));
 
+  // Layer 1: bars (rendered first so line draws on top)
   let bars = '';
+  let valueLabels = '';
   vals.forEach((v, i) => {
     const x = padL + i * (barW + gap);
     const y = yScale(v);
     const h = Math.max(2, padT + chartH - y);
     const fill = v >= lineVal ? '#3b82f6' : '#475569';
     bars += `<rect x="${x}" y="${y}" width="${barW}" height="${h}" rx="2" fill="${fill}" />`;
+
+    // Value label above each bar — round to 1 decimal only if not integer
+    const label = Number.isInteger(v) ? String(v) : v.toFixed(1);
+    const labelX = x + barW / 2;
+    const labelY = Math.max(padT - 3, y - 3); // always inside svg top area
+    valueLabels += `<text x="${labelX}" y="${labelY}" text-anchor="middle"
+      font-size="9" font-family="inherit" font-weight="600"
+      fill="${v >= lineVal ? '#93c5fd' : '#94a3b8'}">${label}</text>`;
   });
+
+  // Layer 2: line rendered AFTER bars so it appears on top
+  const lineLabel = Number.isInteger(lineVal) ? String(lineVal) : lineVal.toFixed(1);
+  // Position label so it doesn't clip at top or bottom
+  const lineLabelY = lineY < padT + 8 ? lineY + 10 : lineY - 3;
+
+  // Axis labels at bottom
+  const axisY = H - 5;
 
   return `
     <svg viewBox="0 0 ${W} ${H}" class="last7-svg" preserveAspectRatio="none">
-      <line x1="${padL}" y1="${lineY}" x2="${W - padR}" y2="${lineY}"
-            stroke="#facc15" stroke-width="2" stroke-dasharray="5 3" />
       ${bars}
+      ${valueLabels}
+
+      <!-- Market line rendered on top of bars -->
+      <line x1="${padL}" y1="${lineY}" x2="${W - padR}" y2="${lineY}"
+            stroke="#facc15" stroke-width="1.5" stroke-dasharray="4 3" />
+      <!-- Line label on right side -->
+      <text x="${W - padR - 2}" y="${lineLabelY}" text-anchor="end"
+        font-size="9" font-family="inherit" font-weight="700" fill="#facc15">${lineLabel}</text>
+
+      <!-- Axis labels: oldest left, latest right -->
+      <text x="${padL}" y="${axisY}" text-anchor="start"
+        font-size="8" font-family="inherit" fill="#64748b">Oldest</text>
+      <text x="${W - padR}" y="${axisY}" text-anchor="end"
+        font-size="8" font-family="inherit" fill="#64748b">Latest</text>
     </svg>
   `;
 }
