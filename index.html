@@ -605,13 +605,20 @@ function formatGameStack(game) {
   return `${away} @<br>${home}`;
 }
 function parseLast7(valsStr) {
-  if (!valsStr) return [];
-  return valsStr.split('|').map(v => parseFloat(v)).filter(v => !Number.isNaN(v));
+  // Always return exactly 7 slots (null = no game played / missing)
+  const N = 7;
+  if (!valsStr || !valsStr.trim()) return Array(N).fill(null);
+  const parsed = valsStr.split('|').map(v => {
+    const n = parseFloat(v);
+    return Number.isNaN(n) ? null : n;
+  });
+  while (parsed.length < N) parsed.unshift(null);
+  return parsed.slice(-N);
 }
 function renderLast7Chart(valsStr, line) {
   const vals = parseLast7(valsStr);
   const lineVal = parseFloat(line);
-  if (!vals.length || Number.isNaN(lineVal)) {
+  if (Number.isNaN(lineVal)) {
     return `<div class="mv" style="padding-top:26px;">No recent data</div>`;
   }
 
@@ -624,30 +631,36 @@ function renderLast7Chart(valsStr, line) {
   const chartW = W - padL - padR;
   const chartH = H - padT - padB;
 
-  const maxVal = Math.max(...vals, lineVal, 1);
-  const minVal = Math.min(...vals, lineVal, 0);
-  const span = Math.max(1, maxVal - minVal);
-  const yScale = v => padT + chartH - ((v - minVal) / span) * chartH;
-  const lineY = yScale(lineVal);
-
-  const n = vals.length;
+  const n = 7; // always 7 slots
   const gap = 3;
   const barW = Math.max(11, Math.floor((chartW - gap * (n - 1)) / n));
 
   // Layer 1: bars (rendered first so line draws on top)
+  const realVals = vals.filter(v => v !== null);
+  const maxVal = realVals.length ? Math.max(...realVals, lineVal, 1) : lineVal + 2;
+  const minVal = realVals.length ? Math.min(...realVals, lineVal, 0) : 0;
+  const span = Math.max(1, maxVal - minVal);
+  const yScale = v => padT + chartH - ((v - minVal) / span) * chartH;
+  const lineY = yScale(lineVal);
+
   let bars = '';
   let valueLabels = '';
   vals.forEach((v, i) => {
     const x = padL + i * (barW + gap);
+    if (v === null) {
+      bars += `<rect x="${x}" y="${padT}" width="${barW}" height="${chartH}" rx="2" fill="#1e293b" opacity="0.5" />`;
+      valueLabels += `<text x="${x + barW/2}" y="${padT + chartH/2}" text-anchor="middle"
+        font-size="8" font-family="inherit" fill="#334155">—</text>`;
+      return;
+    }
     const y = yScale(v);
-    const h = Math.max(2, padT + chartH - y);
+    const barTop = (v === 0) ? padT + chartH - 3 : y;
+    const barH = (v === 0) ? 3 : Math.max(2, padT + chartH - y);
     const fill = v >= lineVal ? '#3b82f6' : '#475569';
-    bars += `<rect x="${x}" y="${y}" width="${barW}" height="${h}" rx="2" fill="${fill}" />`;
-
-    // Value label above each bar — round to 1 decimal only if not integer
+    bars += `<rect x="${x}" y="${barTop}" width="${barW}" height="${barH}" rx="2" fill="${fill}" />`;
     const label = Number.isInteger(v) ? String(v) : v.toFixed(1);
     const labelX = x + barW / 2;
-    const labelY = Math.max(padT - 3, y - 3); // always inside svg top area
+    const labelY = Math.max(padT - 3, barTop - 3);
     valueLabels += `<text x="${labelX}" y="${labelY}" text-anchor="middle"
       font-size="9" font-family="inherit" font-weight="600"
       fill="${v >= lineVal ? '#93c5fd' : '#94a3b8'}">${label}</text>`;
