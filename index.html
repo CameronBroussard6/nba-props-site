@@ -649,8 +649,9 @@ function renderLast7Chart(valsStr, line) {
     const x = padL + i * (barW + gap);
     if (v === null) {
       bars += `<rect x="${x}" y="${padT}" width="${barW}" height="${chartH}" rx="2" fill="#1e293b" opacity="0.5" />`;
-      valueLabels += `<text x="${x + barW/2}" y="${padT + chartH/2}" text-anchor="middle"
-        font-size="8" font-family="inherit" fill="#334155">—</text>`;
+      // NA label at the bottom of the bar
+      valueLabels += `<text x="${x + barW/2}" y="${padT + chartH - 4}" text-anchor="middle"
+        font-size="8" font-family="inherit" fill="#475569">NA</text>`;
       return;
     }
     const y = yScale(v);
