@@ -1,0 +1,56 @@
+date,game,player_name,cluster,line,prediction,edge,edge_pct,direction,pick,edge_score,ag_score,agreement,role_flag,last7_vals,confidence,model_std,blowout_risk,best_over_odds,best_under_odds,best_odds_for_bet,home_ml,away_ml,imp_over_prob,imp_under_prob,model_win_prob,kelly,m1_xgb,m4_mean,m5_context,m7_matchup,n_books
+2026-04-09,Miami Heat (+143) @ Toronto Raptors (-170),Sandro Mamukelashvili,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,100,0.316,0.19,130,-144,-144,-170,143,0.424,0.576,1,0.5,0,0,0,0.29,5
+2026-04-09,Los Angeles Lakers (+155) @ Golden State Warriors (-185),Luke Kennard,C1,2.5,0.11,-2.39,95.6,UNDER,STRONG UNDER,12,0.8,HIGH,NORMAL,,90,0.392,0.58,140,-150,-150,-185,155,0.41,0.59,1,0.5,0,0,0,0.29,6
+2026-04-09,Philadelphia 76ers (+145) @ Houston Rockets (-171),Reed Sheppard,C1,2.5,0.11,-2.39,95.6,UNDER,STRONG UNDER,12,0.8,HIGH,NORMAL,,90,0.323,0.39,210,100,100,-171,145,0.392,0.608,1,0.5,0,0,0,0.29,6
+2026-04-09,Los Angeles Lakers (+155) @ Golden State Warriors (-185),Jake LaRavia,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,90,0.35,0.58,-102,-110,-110,-185,155,0.491,0.509,1,0.5,0,0,0,0.29,6
+2026-04-09,Philadelphia 76ers (+145) @ Houston Rockets (-171),Joel Embiid,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,90,0.378,0.53,115,-121,-121,-171,145,0.459,0.541,1,0.5,0,0,0,0.27,6
+2026-04-09,Philadelphia 76ers (+145) @ Houston Rockets (-171),VJ Edgecombe,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,90,0.103,0.55,-110,-105,-105,-171,145,0.506,0.494,1,0.5,0,0,0,0.27,6
+2026-04-09,Indiana Pacers (-170) @ Brooklyn Nets (+140),Jarace Walker,C1,2.5,0.11,-2.39,95.6,UNDER,STRONG UNDER,12,0.8,HIGH,NORMAL,,88,0.268,0.21,146,-192,-192,140,-170,0.382,0.618,1,0.5,0,0,0,0.28,1
+2026-04-09,Los Angeles Lakers (+155) @ Golden State Warriors (-185),Gui Santos,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,88,0.318,0.06,-115,-112,-112,-185,155,0.503,0.497,1,0.5,0,0,0,0.27,1
+2026-04-09,Los Angeles Lakers (+155) @ Golden State Warriors (-185),Pat Spencer,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,88,0.093,0,144,-189,-189,-185,155,0.385,0.615,1,0.5,0,0,0,0.27,1
+2026-04-09,Los Angeles Lakers (+155) @ Golden State Warriors (-185),Marcus Smart,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,MED,NORMAL,,80,0.443,0.2,190,121,121,-185,155,0.432,0.568,0.999,0.4991,0,0,0,0.29,6
+2026-04-09,Boston Celtics (+158) @ New York Knicks (-182),Mikal Bridges,C1,1.5,0.13,-1.37,91.3,UNDER,UNDER,8.8,0.8,MED,NORMAL,,80,0.487,0.23,-127,120,120,-182,158,0.552,0.448,0.998,0.4982,0,0,0,0.33,5
+2026-04-09,Chicago Bulls (-250) @ Washington Wizards (+205),Tre Johnson,C1,2.5,0.13,-2.37,94.8,UNDER,STRONG UNDER,11.9,0.8,HIGH,NORMAL,,78,0.121,0.37,152,-200,-200,205,-250,0.373,0.627,1,0.5,0,0,0,0.32,1
+2026-04-09,Indiana Pacers (-170) @ Brooklyn Nets (+140),Drake Powell,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,78,0.104,0.36,-132,102,102,140,-170,0.535,0.465,1,0.5,0,0,0,0.28,1
+2026-04-09,Miami Heat (+143) @ Toronto Raptors (-170),Jamal Shead,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,78,0.287,0.51,186,-250,-250,-170,143,0.329,0.671,1,0.5,0,0,0,0.29,1
+2026-04-09,Indiana Pacers (-170) @ Brooklyn Nets (+140),Jay Huff,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,78,0.313,0.43,-120,-108,-108,140,-170,0.512,0.488,1,0.5,0,0,0,0.28,1
+2026-04-09,Indiana Pacers (-170) @ Brooklyn Nets (+140),Kobe Brown,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,78,0.147,0.58,130,-169,-169,140,-170,0.409,0.591,1,0.5,0,0,0,0.28,1
+2026-04-09,Indiana Pacers (-170) @ Brooklyn Nets (+140),Quenton Jackson,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,78,0.268,0.41,144,-189,-189,140,-170,0.385,0.615,1,0.5,0,0,0,0.28,1
+2026-04-09,Chicago Bulls (-250) @ Washington Wizards (+205),Isaac Okoro,C1,1.5,0.12,-1.38,92,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,78,0.319,0.53,136,-179,-179,205,-250,0.398,0.602,1,0.5,0,0,0,0.3,1
+2026-04-09,Chicago Bulls (-250) @ Washington Wizards (+205),Leonard Miller,C1,1.5,0.12,-1.38,92,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,78,0.106,0.52,120,-156,-156,205,-250,0.427,0.573,1,0.5,0,0,0,0.3,1
+2026-04-09,Boston Celtics (+158) @ New York Knicks (-182),Josh Hart,C1,1.5,0.13,-1.37,91.3,UNDER,UNDER,8.8,0.8,HIGH,NORMAL,,78,0.39,0.48,144,-189,-189,-182,158,0.385,0.615,1,0.5,0,0,0,0.33,1
+2026-04-09,Boston Celtics (+158) @ New York Knicks (-182),Karl-Anthony Towns,C1,1.5,0.13,-1.37,91.3,UNDER,UNDER,8.8,0.8,MED,NORMAL,,74,0.646,0.21,145,-143,-143,-182,158,0.41,0.59,0.983,0.4793,0,0,0,0.33,3
+2026-04-09,Miami Heat (+143) @ Toronto Raptors (-170),Immanuel Quickley,C1,2.5,0.11,-2.39,95.6,UNDER,UNDER,12,0.8,MED,NORMAL,,70,0.845,0.37,140,-150,-150,-170,143,0.41,0.59,0.998,0.4975,0,0,0,0.29,6
+2026-04-09,Philadelphia 76ers (+145) @ Houston Rockets (-171),Kevin Durant,C1,2.5,0.11,-2.39,95.6,UNDER,UNDER,12,0.8,MED,NORMAL,,70,0.845,0.44,105,-130,-130,-171,145,0.463,0.537,0.998,0.4977,0,0,0,0.29,6
+2026-04-09,Miami Heat (+143) @ Toronto Raptors (-170),Norman Powell,C1,2.5,0.11,-2.39,95.6,UNDER,UNDER,12,0.8,MED,NORMAL,,70,0.873,0.35,140,-159,-159,-170,143,0.404,0.596,0.997,0.4961,0,0,0,0.27,5
+2026-04-09,Philadelphia 76ers (+145) @ Houston Rockets (-171),Paul George,C1,2.5,0.11,-2.39,95.6,UNDER,UNDER,12,0.8,MED,NORMAL,,70,0.845,0.38,105,-117,-117,-171,145,0.475,0.525,0.998,0.4978,0,0,0,0.27,6
+2026-04-09,Philadelphia 76ers (+145) @ Houston Rockets (-171),Tyrese Maxey,C1,2.5,0.11,-2.39,95.6,UNDER,UNDER,12,0.8,MED,NORMAL,,70,0.681,0.6,100,-112,-112,-171,145,0.486,0.514,1,0.5,0,0,0,0.27,6
+2026-04-09,Miami Heat (+143) @ Toronto Raptors (-170),Andrew Wiggins,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,MED,NORMAL,,70,0.786,0.58,155,145,145,-170,143,0.49,0.51,0.962,0.4679,0,0,0,0.27,6
+2026-04-09,Miami Heat (+143) @ Toronto Raptors (-170),Davion Mitchell,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,MED,NORMAL,,70,0.569,0.37,140,-140,-140,-170,143,0.417,0.583,0.993,0.4916,0,0,0,0.27,6
+2026-04-09,Miami Heat (+143) @ Toronto Raptors (-170),Ja'Kobe Walter,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,MED,NORMAL,,70,0.528,0.46,-103,-122,-122,-170,143,0.48,0.52,0.996,0.4956,0,0,0,0.29,5
+2026-04-09,Philadelphia 76ers (+145) @ Houston Rockets (-171),Tari Eason,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,MED,NORMAL,,70,0.508,0.55,144,-182,-182,-171,145,0.388,0.612,0.997,0.4958,0,0,0,0.29,5
+2026-04-09,Los Angeles Lakers (+155) @ Golden State Warriors (-185),Draymond Green,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,MED,NORMAL,,68,0.594,0.12,-120,-108,-108,-185,155,0.512,0.488,0.99,0.4896,0,0,0,0.27,1
+2026-04-09,Chicago Bulls (-250) @ Washington Wizards (+205),Bilal Coulibaly,C1,1.5,0.13,-1.37,91.3,UNDER,UNDER,8.8,0.8,HIGH,NORMAL,,68,0.266,0.88,164,-217,-217,205,-250,0.356,0.644,1,0.5,0,0,0,0.32,1
+2026-04-09,Philadelphia 76ers (+145) @ Houston Rockets (-171),Aaron Holiday,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,MED,NORMAL,,67,0.605,0.36,167,-212,-212,-171,145,0.355,0.645,0.989,0.4828,0,0,0,0.29,4
+2026-04-09,Philadelphia 76ers (+145) @ Houston Rockets (-171),Quentin Grimes,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,LOW,NORMAL,,65,1.181,0.24,164,-198,-198,-171,145,0.363,0.637,0.88,0.3212,0,0,0,0.27,5
+2026-04-09,Boston Celtics (+158) @ New York Knicks (-182),Jaylen Brown,C1,1.5,0.1,-1.4,93.3,UNDER,UNDER,8.9,0.8,MED,NORMAL,,61,0.472,0.38,-154,120,120,-182,158,0.572,0.428,0.998,0.4982,0,0,0,0.24,2
+2026-04-09,Miami Heat (+143) @ Toronto Raptors (-170),Bam Adebayo,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,MED,NORMAL,,60,0.529,0.72,190,130,130,-170,143,0.442,0.558,0.996,0.4965,0,0,0,0.27,6
+2026-04-09,Miami Heat (+143) @ Toronto Raptors (-170),Brandon Ingram,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,MED,NORMAL,,60,0.694,0.62,-127,104,104,-170,143,0.533,0.467,0.977,0.4774,0,0,0,0.29,6
+2026-04-09,Los Angeles Lakers (+155) @ Golden State Warriors (-185),LeBron James,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,MED,NORMAL,,60,0.707,0.61,130,-140,-140,-185,155,0.427,0.573,0.975,0.47,0,0,0,0.29,6
+2026-04-09,Los Angeles Lakers (+155) @ Golden State Warriors (-185),Rui Hachimura,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,MED,NORMAL,,60,0.629,0.62,210,109,109,-185,155,0.403,0.597,0.986,0.4866,0,0,0,0.29,6
+2026-04-09,Boston Celtics (+158) @ New York Knicks (-182),Sam Hauser,C1,2.5,0.1,-2.4,96,UNDER,UNDER,12,0.8,MED,NORMAL,,58,0.88,0.39,145,-200,-200,-182,158,0.38,0.62,0.997,0.4955,0,0,0,0.24,1
+2026-04-09,Chicago Bulls (-250) @ Washington Wizards (+205),Collin Sexton,C1,2.5,0.12,-2.38,95.2,UNDER,UNDER,11.9,0.8,MED,NORMAL,,58,0.426,0.38,132,-172,-172,205,-250,0.405,0.595,1,0.5,0,0,0,0.3,1
+2026-04-09,Los Angeles Lakers (+155) @ Golden State Warriors (-185),De'Anthony Melton,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,MED,NORMAL,,58,0.862,0.43,-164,125,125,-185,155,0.583,0.417,0.947,0.4523,0,0,0,0.27,1
+2026-04-09,Chicago Bulls (-250) @ Washington Wizards (+205),Guerschon Yabusele,C1,1.5,0.12,-1.38,92,UNDER,UNDER,8.9,0.8,MED,NORMAL,,58,0.707,0.51,-154,118,118,205,-250,0.569,0.431,0.975,0.4769,0,0,0,0.3,1
+2026-04-09,Miami Heat (+143) @ Toronto Raptors (-170),Tyler Herro,C1,2.5,0.11,-2.39,95.6,UNDER,UNDER,12,0.8,LOW,NORMAL,,55,0.99,0.5,170,110,110,-170,143,0.438,0.562,0.992,0.4924,0,0,0,0.27,6
+2026-04-09,Boston Celtics (+158) @ New York Knicks (-182),Jalen Brunson,C1,2.5,0.13,-2.37,94.8,UNDER,UNDER,11.9,0.8,LOW,NORMAL,,55,0.928,0.52,120,-140,-140,-182,158,0.438,0.562,0.995,0.494,0,0,0,0.33,5
+2026-04-09,Boston Celtics (+158) @ New York Knicks (-182),OG Anunoby,C1,2.5,0.13,-2.37,94.8,UNDER,UNDER,11.9,0.8,MED,NORMAL,,54,0.819,0.63,-120,102,102,-182,158,0.524,0.476,0.998,0.498,0,0,0,0.33,3
+2026-04-09,Los Angeles Lakers (+155) @ Golden State Warriors (-185),Brandin Podziemski,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,LOW,NORMAL,,53,0.954,0.13,-189,144,144,-185,155,0.615,0.385,0.927,0.4382,0,0,0,0.27,1
+2026-04-09,Boston Celtics (+158) @ New York Knicks (-182),Jayson Tatum,C1,3.5,0.1,-3.4,97.1,UNDER,UNDER,14.2,0.8,LOW,NORMAL,,46,1.119,0.52,132,-156,-156,-182,158,0.414,0.586,0.999,0.4987,0,0,0,0.24,2
+2026-04-09,Los Angeles Lakers (+155) @ Golden State Warriors (-185),Stephen Curry,C1,4.5,0.11,-4.39,97.6,UNDER,UNDER,15.4,0.8,LOW,NORMAL,,43,1.784,0.3,141,-185,-185,-185,155,0.39,0.61,0.993,0.49,0,0,0,0.27,1
+2026-04-09,Boston Celtics (+158) @ New York Knicks (-182),Derrick White,C1,2.5,0.1,-2.4,96,UNDER,UNDER,12,0.8,LOW,NORMAL,,36,1.457,0.61,104,-122,-122,-182,158,0.471,0.529,0.95,0.4445,0,0,0,0.24,2
+2026-04-09,Philadelphia 76ers (+145) @ Houston Rockets (-171),Alperen Sengun,C1,0.5,0.11,-0.39,78,UNDER,PASS,5.2,0.8,HIGH,NORMAL,,88,0.115,0.1,100,-130,-130,-171,145,0.469,0.531,0.903,0.3884,0,0,0,0.29,1
+2026-04-09,Miami Heat (+143) @ Toronto Raptors (-170),Pelle Larsson,C1,0.5,0.11,-0.39,78,UNDER,PASS,5.2,0.8,HIGH,NORMAL,,87,0.361,0.46,205,171,171,-170,143,0.47,0.53,0.86,0.3891,0,0,0,0.27,4
+2026-04-09,Indiana Pacers (-170) @ Brooklyn Nets (+140),Ben Saraf,C1,0.5,0.11,-0.39,78,UNDER,PASS,5.2,0.8,HIGH,NORMAL,,78,0.104,0.34,-130,100,100,140,-170,0.531,0.469,0.903,0.403,0,0,0,0.28,1
+2026-04-09,Miami Heat (+143) @ Toronto Raptors (-170),Scottie Barnes,C1,0.5,0.11,-0.39,78,UNDER,PASS,5.2,0.8,HIGH,NORMAL,,78,0.399,0.47,-156,121,121,-170,143,0.574,0.426,0.836,0.3502,0,0,0,0.29,1
+2026-04-09,Chicago Bulls (-250) @ Washington Wizards (+205),Tre Jones,C1,0.5,0.12,-0.38,76,UNDER,PASS,5.1,0.8,HIGH,NORMAL,,78,0.252,0.31,-156,121,121,205,-250,0.574,0.426,0.897,0.4059,0,0,0,0.3,1
