@@ -1,0 +1,17 @@
+date,game,player_name,cluster,line,prediction,edge,edge_pct,direction,pick,edge_score,ag_score,agreement,role_flag,last7_vals,confidence,model_std,blowout_risk,best_over_odds,best_under_odds,best_odds_for_bet,home_ml,away_ml,imp_over_prob,imp_under_prob,model_win_prob,kelly,m1_xgb,m4_mean,m5_context,m7_matchup,n_books
+2026-06-13,New York Knicks (+165) @ San Antonio Spurs (-195),Dylan Harper,C1,1.5,0.1,-1.4,93.3,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,100,0.092,0.21,130,-154,-154,-195,165,0.418,0.582,1,0.5,0,0,0,0.24,5
+2026-06-13,New York Knicks (+165) @ San Antonio Spurs (-195),Stephon Castle,C1,1.5,0.1,-1.4,93.3,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,100,0.354,0.08,148,-185,-185,-195,165,0.383,0.617,1,0.5,0,0,0,0.24,5
+2026-06-13,New York Knicks (+165) @ San Antonio Spurs (-195),Josh Hart,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,90,0.376,0.38,140,-160,-160,-195,165,0.404,0.596,1,0.5,0,0,0,0.28,5
+2026-06-13,New York Knicks (+165) @ San Antonio Spurs (-195),Landry Shamet,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,90,0.229,0.55,-105,-113,-113,-195,165,0.491,0.509,1,0.5,0,0,0,0.28,5
+2026-06-13,New York Knicks (+165) @ San Antonio Spurs (-195),De'Aaron Fox,C1,1.5,0.1,-1.4,93.3,UNDER,UNDER,8.9,0.8,MED,NORMAL,,80,0.691,0,130,-150,-150,-195,165,0.42,0.58,0.979,0.4737,0,0,0,0.24,5
+2026-06-13,New York Knicks (+165) @ San Antonio Spurs (-195),Mikal Bridges,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,MED,NORMAL,,80,0.734,0.16,145,-159,-159,-195,165,0.399,0.601,0.971,0.4624,0,0,0,0.28,5
+2026-06-13,New York Knicks (+165) @ San Antonio Spurs (-195),Devin Vassell,C1,2.5,0.1,-2.4,96,UNDER,UNDER,12,0.8,MED,NORMAL,,77,0.867,0.13,115,-125,-125,-195,165,0.456,0.544,0.997,0.4966,0,0,0,0.24,4
+2026-06-13,New York Knicks (+165) @ San Antonio Spurs (-195),Julian Champagnie,C1,2.5,0.1,-2.4,96,UNDER,UNDER,12,0.8,MED,NORMAL,,77,0.741,0.19,130,-170,-170,-195,165,0.408,0.592,0.999,0.4986,0,0,0,0.24,4
+2026-06-13,New York Knicks (+165) @ San Antonio Spurs (-195),Karl-Anthony Towns,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,MED,NORMAL,,70,0.542,0.48,148,-170,-170,-195,165,0.39,0.61,0.995,0.4932,0,0,0,0.28,5
+2026-06-13,New York Knicks (+165) @ San Antonio Spurs (-195),Jalen Brunson,C1,2.5,0.11,-2.39,95.6,UNDER,UNDER,12,0.8,LOW,NORMAL,,65,1.025,0.27,124,-150,-150,-195,165,0.427,0.573,0.99,0.4875,0,0,0,0.28,5
+2026-06-13,New York Knicks (+165) @ San Antonio Spurs (-195),OG Anunoby,C1,2.5,0.11,-2.39,95.6,UNDER,UNDER,12,0.8,LOW,NORMAL,,65,1.019,0.08,100,-110,-110,-195,165,0.488,0.512,0.99,0.4895,0,0,0,0.28,5
+2026-06-13,New York Knicks (+165) @ San Antonio Spurs (-195),Victor Wembanyama,C1,1.5,0.1,-1.4,93.3,UNDER,UNDER,8.9,0.8,LOW,NORMAL,,65,0.936,0,165,143,143,-195,165,0.478,0.522,0.933,0.4431,0,0,0,0.24,5
+2026-06-13,New York Knicks (+165) @ San Antonio Spurs (-195),Keldon Johnson,C1,0.5,0.1,-0.4,80,UNDER,PASS,5.2,0.8,HIGH,NORMAL,,91,0.302,0.02,-115,-114,-114,-195,165,0.501,0.499,0.907,0.4005,0,0,0,0.24,2
+2026-06-13,New York Knicks (+165) @ San Antonio Spurs (-195),Jose Alvarado,C1,0.5,0.11,-0.39,78,UNDER,PASS,5.2,0.8,MED,NORMAL,,74,0.541,0.27,-138,110,110,-195,165,0.549,0.451,0.765,0.2757,0,0,0,0.28,3
+2026-06-13,New York Knicks (+165) @ San Antonio Spurs (-195),Miles McBride,C1,0.5,0.11,-0.39,78,UNDER,PASS,5.2,0.8,MED,NORMAL,,74,0.655,0.28,-105,-111,-111,-195,165,0.493,0.507,0.724,0.2088,0,0,0,0.28,3
+2026-06-13,New York Knicks (+165) @ San Antonio Spurs (-195),Jordan Clarkson,C1,0.5,0.11,-0.39,78,UNDER,PASS,5.2,0.8,MED,NORMAL,,71,0.613,0,240,-328,-328,-195,165,0.277,0.723,0.738,0,0,0,0,0.28,2
