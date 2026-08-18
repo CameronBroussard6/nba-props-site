@@ -1,0 +1,6 @@
+date,game,player_name,cluster,line,prediction,edge,edge_pct,direction,pick,edge_score,ag_score,agreement,role_flag,last7_vals,confidence,model_std,blowout_risk,best_over_odds,best_under_odds,best_odds_for_bet,home_ml,away_ml,imp_over_prob,imp_under_prob,model_win_prob,kelly,m1_xgb,m4_mean,m5_context,m7_matchup,n_books
+2026-08-18,Boston Celtics (+105) @ Detroit Pistons (-125),Cade Cunningham,C1,2.5,0.13,-2.37,94.8,UNDER,UNDER,11.9,0.8,MED,NORMAL,,58,0.719,0.53,148,-200,-200,-125,105,0.377,0.623,1,0.5,0,0,0,0.33,1
+2026-08-18,Oklahoma City Thunder (+106) @ San Antonio Spurs (-125),Shai Gilgeous-Alexander,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,MED,NORMAL,,58,0.703,0.47,100,-132,-132,-125,106,0.468,0.532,0.976,0.4722,0,0,0,0.28,1
+2026-08-18,Philadelphia 76ers (+142) @ New York Knicks (-170),Jalen Brunson,C1,2.5,0.11,-2.39,95.6,UNDER,UNDER,12,0.8,LOW,NORMAL,,53,1,0.21,116,-154,-154,-170,142,0.433,0.567,0.992,0.4898,0,0,0,0.29,1
+2026-08-18,Boston Celtics (+105) @ Detroit Pistons (-125),Jayson Tatum,C1,2.5,0.11,-2.39,95.6,UNDER,UNDER,12,0.8,LOW,NORMAL,,53,1.182,0.23,-128,-104,-104,-125,105,0.524,0.476,0.978,0.4776,0,0,0,0.27,1
+2026-08-18,Oklahoma City Thunder (+106) @ San Antonio Spurs (-125),Victor Wembanyama,C1,1.5,0.13,-1.37,91.3,UNDER,UNDER,8.8,0.8,LOW,NORMAL,,53,0.903,0,-188,140,140,-125,106,0.61,0.39,0.935,0.4443,0,0,0,0.33,1
