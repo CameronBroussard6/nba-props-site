@@ -1,0 +1,23 @@
+date,game,player_name,cluster,line,prediction,edge,edge_pct,direction,pick,edge_score,ag_score,agreement,role_flag,last7_vals,confidence,model_std,blowout_risk,best_over_odds,best_under_odds,best_odds_for_bet,home_ml,away_ml,imp_over_prob,imp_under_prob,model_win_prob,kelly,m1_xgb,m4_mean,m5_context,m7_matchup,n_books
+2026-11-05,Miami Heat (+220) @ Golden State Warriors (-270),Will Richard,C1,1,0.11,-0.89,89,UNDER,UNDER,7,0.8,HIGH,NORMAL,,97,0.108,0.22,182,165,165,-270,220,0.484,0.516,0.998,0.4984,0,0,0,0.29,4
+2026-11-05,Orlando Magic (-106) @ Phoenix Suns (-114),Collin Gillespie,C1,2.5,0.08,-2.42,96.8,UNDER,STRONG UNDER,12.1,0.8,HIGH,NORMAL,,90,0.361,0.31,165,138,138,-114.5,-106.5,0.473,0.527,1,0.5,0,0,0,0.21,5
+2026-11-05,Miami Heat (+220) @ Golden State Warriors (-270),Bam Adebayo,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,90,0.353,0.47,167,170,170,-270,220,0.503,0.497,1,0.5,0,0,0,0.29,6
+2026-11-05,Miami Heat (+220) @ Golden State Warriors (-270),Davion Mitchell,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,90,0.398,0.42,-105,-110,-110,-270,220,0.494,0.506,1,0.5,0,0,0,0.29,6
+2026-11-05,Miami Heat (+220) @ Golden State Warriors (-270),Yaxel Lendeborg,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,90,0.108,0.41,170,133,133,-270,220,0.463,0.537,1,0.5,0,0,0,0.29,6
+2026-11-05,Orlando Magic (-106) @ Phoenix Suns (-114),Anthony Black,C1,1.5,0.12,-1.38,92,UNDER,UNDER,8.9,0.8,HIGH,NORMAL,,90,0.343,0.45,-130,110,110,-114.5,-106.5,0.543,0.457,1,0.5,0,0,0,0.3,6
+2026-11-05,Orlando Magic (-106) @ Phoenix Suns (-114),Tristan da Silva,C1,2.5,0.12,-2.38,95.2,UNDER,UNDER,11.9,0.8,MED,NORMAL,,80,0.464,0.2,105,-128,-128,-114.5,-106.5,0.465,0.535,1,0.5,0,0,0,0.3,6
+2026-11-05,Orlando Magic (-106) @ Phoenix Suns (-114),Devin Booker,C1,1.5,0.08,-1.42,94.7,UNDER,UNDER,9,0.8,MED,NORMAL,,80,0.536,0.28,-125,110,110,-114.5,-106.5,0.538,0.462,0.996,0.4962,0,0,0,0.21,6
+2026-11-05,Orlando Magic (-106) @ Phoenix Suns (-114),Miles Bridges,C1,1.5,0.08,-1.42,94.7,UNDER,UNDER,9,0.8,MED,NORMAL,,80,0.635,0.01,175,130,130,-114.5,-106.5,0.455,0.545,0.987,0.4885,0,0,0,0.21,6
+2026-11-05,Miami Heat (+220) @ Golden State Warriors (-270),De'Anthony Melton,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,MED,NORMAL,,80,0.862,0.07,-104,-118,-118,-270,220,0.485,0.515,0.947,0.4422,0,0,0,0.29,6
+2026-11-05,Orlando Magic (-106) @ Phoenix Suns (-114),Franz Wagner,C1,1.5,0.12,-1.38,92,UNDER,UNDER,8.9,0.8,MED,NORMAL,,80,0.837,0.27,115,-135,-135,-114.5,-106.5,0.447,0.553,0.95,0.4412,0,0,0,0.3,6
+2026-11-05,Miami Heat (+220) @ Golden State Warriors (-270),Klay Thompson,C1,3,0.11,-2.89,96.3,UNDER,UNDER,13.1,0.8,MED,NORMAL,,70,0.787,0.44,155,130,130,-270,220,0.474,0.526,1,0.5,0,0,0,0.29,6
+2026-11-05,Orlando Magic (-106) @ Phoenix Suns (-114),Dillon Brooks,C1,1.5,0.08,-1.42,94.7,UNDER,UNDER,9,0.8,MED,NORMAL,,70,0.854,0.32,190,119,119,-114.5,-106.5,0.43,0.57,0.952,0.4558,0,0,0,0.21,5
+2026-11-05,Miami Heat (+220) @ Golden State Warriors (-270),Andrew Wiggins,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,MED,NORMAL,,70,0.655,0.55,-105,-105,-105,-270,220,0.5,0.5,0.983,0.4826,0,0,0,0.29,6
+2026-11-05,Orlando Magic (-106) @ Phoenix Suns (-114),Desmond Bane,C1,3.5,0.12,-3.38,96.6,UNDER,UNDER,14.1,0.8,LOW,NORMAL,,65,1.123,0.26,150,130,130,-114.5,-106.5,0.479,0.521,0.999,0.4991,0,0,0,0.3,6
+2026-11-05,Miami Heat (+220) @ Golden State Warriors (-270),Georges Niang,C1,1.5,0.11,-1.39,92.7,UNDER,UNDER,8.9,0.8,LOW,NORMAL,,65,1.316,0.29,128,-152,-152,-270,220,0.421,0.579,0.855,0.3173,0,0,0,0.29,5
+2026-11-05,Miami Heat (+220) @ Golden State Warriors (-270),Stephen Curry,C1,4.5,0.11,-4.39,97.6,UNDER,UNDER,15.4,0.8,LOW,NORMAL,,55,1.783,0.36,125,-141,-141,-270,220,0.432,0.568,0.993,0.4916,0,0,0,0.29,6
+2026-11-05,Miami Heat (+220) @ Golden State Warriors (-270),Brandin Podziemski,C1,2.5,0.11,-2.39,95.6,UNDER,UNDER,12,0.8,LOW,NORMAL,,55,0.953,0.33,141,-177,-177,-270,220,0.394,0.606,0.994,0.4917,0,0,0,0.29,6
+2026-11-05,Orlando Magic (-106) @ Phoenix Suns (-114),Jalen Green,C1,1.5,0.08,-1.42,94.7,UNDER,UNDER,9,0.8,LOW,NORMAL,,55,1.008,0.3,210,120,120,-114.5,-106.5,0.415,0.585,0.921,0.4276,0,0,0,0.21,6
+2026-11-05,Orlando Magic (-106) @ Phoenix Suns (-114),Jamal Cain,C1,0.5,0.12,-0.38,76,UNDER,PASS,5.1,0.8,HIGH,NORMAL,,91,0.201,0.22,-147,134,134,-114.5,-106.5,0.582,0.418,0.897,0.4101,0,0,0,0.3,2
+2026-11-05,Orlando Magic (-106) @ Phoenix Suns (-114),Jase Richardson,C1,0.5,0.12,-0.38,76,UNDER,PASS,5.1,0.8,HIGH,NORMAL,,81,0.112,0.49,-217,180,180,-114.5,-106.5,0.657,0.343,0.897,0.4199,0,0,0,0.3,2
+2026-11-05,Miami Heat (+220) @ Golden State Warriors (-270),Draymond Green,C1,0.5,0.11,-0.39,78,UNDER,PASS,5.2,0.8,MED,NORMAL,,71,0.594,0.13,-141,108,108,-270,220,0.549,0.451,0.744,0.2535,0,0,0,0.29,2
